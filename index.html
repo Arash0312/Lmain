@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Breach</title>
+    <title>نفوذ به سیستم</title>
     <style>
         body {
             background-color: black;
@@ -14,11 +14,7 @@
             overflow: hidden;
             user-select: none;
             text-align: center;
-        }
-        #terminal {
-            white-space: pre-line;
-            height: 100vh;
-            overflow-y: hidden;
+            direction: rtl;
         }
         .warning {
             color: red;
@@ -42,41 +38,16 @@
     </style>
 </head>
 <body oncontextmenu="return false;" onkeydown="return disableKeys(event);">
-    <div id="terminal">Initializing hack...
+    <div id="terminal">اطلاعات شخصی شما برای سازنده ارسال شد.
     </div>
-    <input type="password" id="passwordInput" placeholder="Enter Password" onkeydown="checkPassword(event)">
+    <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید" onkeydown="checkPassword(event)">
     <script>
-        const messages = [
-            "Accessing system files...",
-            "Bypassing firewall...",
-            "Extracting passwords...",
-            "Injecting malware...",
-            "Uploading sensitive data to server...",
-            "Disabling security protocols...",
-            "Full system control acquired!",
-            "\n\n<ERROR> SYSTEM BREACH DETECTED!", 
-            "\n\nSHUTDOWN INITIATED..."
-        ];
-
-        let index = 0;
-        const terminal = document.getElementById("terminal");
         const passwordInput = document.getElementById("passwordInput");
 
-        function typeMessage() {
-            if (index < messages.length) {
-                terminal.innerHTML += "\n" + messages[index];
-                index++;
-                setTimeout(typeMessage, Math.random() * 1500 + 500);
-            } else {
-                setTimeout(() => {
-                    document.body.innerHTML = '<h1 class="warning">SYSTEM FAILURE</h1>';
-                    passwordInput.style.display = 'block';
-                    passwordInput.focus();
-                }, 2000);
-            }
-        }
-        
-        setTimeout(typeMessage, 1000);
+        setTimeout(() => {
+            passwordInput.style.display = 'block';
+            passwordInput.focus();
+        }, 2000);
 
         function disableMouse() {
             document.onmousemove = function(event) {
@@ -116,15 +87,15 @@
         });
         
         let audio = new Audio('https://www.myinstants.com/media/sounds/windows-xp-error.mp3');
-        setTimeout(() => { audio.play(); }, 3000);
+        setTimeout(() => { audio.play(); }, 1000);
         
         function checkPassword(event) {
             if (event.key === 'Enter') {
                 if (passwordInput.value === '1111') {
-                    alert('System Restored!');
+                    alert('سیستم بازیابی شد!');
                     location.reload();
                 } else {
-                    alert('Incorrect Password!');
+                    alert('رمز عبور نادرست است!');
                 }
             }
         }

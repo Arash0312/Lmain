@@ -4,11 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دکمه 1</title>
-    <link rel="stylesheet" href="detail.css">
+    <style>
+        /* detail.css */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* پس‌زمینه تم دارک */
+            color: #fff; /* رنگ متن */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #1e1e1e; /* پس‌زمینه محتوا */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* سایه */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ecf0f1; /* رنگ عنوان */
+        }
+
+        .inner-btns {
+            margin-top: 20px;
+        }
+
+        .sub-btn {
+            padding: 12px 25px;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-btn:hover {
+            background-color: #3498db; /* رنگ هاور */
+        }
+
+        .sub-btn:active {
+            transform: translateY(2px); /* افکت فشار */
+        }
+
+        /* قسمت متن توضیحات */
+        #textContent {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2c3e50;
+            border-radius: 8px;
+            color: #ecf0f1;
+            font-size: 16px;
+            line-height: 1.5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* دکمه بازگشت به صفحه اصلی */
+        .back-btn {
+            padding: 12px 25px;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #c0392b; /* رنگ هاور */
+        }
+
+        .back-btn:active {
+            transform: translateY(2px); /* افکت فشار */
+        }
+
+        a {
+            color: #27ae60;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="content">
-        <h1>Kaisar</h1>
+        <h1>دکمه 1</h1>
         
         <!-- دکمه‌های توضیحات و ورود -->
         <div class="inner-btns">
@@ -18,16 +118,17 @@
         
         <!-- متن توضیحات و ورود -->
         <div id="textContent">
-            در این پروژه میتونید با کد رفرال پاداش مازاد دریافت کنید 
-            〽️code: cIGKHn697
+            در این پروژه میتونید با کد رفرال پاداش مازاد دریافت کنید
+            〽️کد: cIGKHn697
 
-             : اگر توضیحاتی راجب پروژه خواستید🌟
-            https://t.me/AirdropBeFarsi/12806
+            اگر توضیحاتی راجب پروژه خواستید 🌟
+            <a href="https://t.me/AirdropBeFarsi/12806" target="_blank">لینک تلگرام</a>
 
-            .توجه بفرمایید که پروژه دپین هست و نیاز به اکستنشن برای ماینینگ داره که لینک مربوطه در چنل بالا قرار داده شده است
+            توجه کنید که پروژه دپین است و نیاز به اکستنشن برای ماینینگ دارد که لینک آن در کانال تلگرام قرار داده شده است.
         </div>
         
-        <a href="index.html">بازگشت به صفحه اصلی</a>
+        <!-- دکمه بازگشت به صفحه اصلی -->
+        <button class="back-btn" onclick="window.history.back()">بازگشت به صفحه اصلی</button>
     </div>
 
     <script>

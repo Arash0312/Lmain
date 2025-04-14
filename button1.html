@@ -35,30 +35,6 @@
             color: #ecf0f1; /* رنگ عنوان */
         }
 
-        .inner-btns {
-            margin-top: 20px;
-        }
-
-        .sub-btn {
-            padding: 12px 25px;
-            background-color: #2980b9;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sub-btn:hover {
-            background-color: #3498db; /* رنگ هاور */
-        }
-
-        .sub-btn:active {
-            transform: translateY(2px); /* افکت فشار */
-        }
-
         /* قسمت متن توضیحات */
         #textContent {
             margin-top: 30px;
@@ -109,14 +85,8 @@
 <body>
     <div class="content">
         <h1>دکمه 1</h1>
-        
-        <!-- دکمه‌های توضیحات و ورود -->
-        <div class="inner-btns">
-            <button id="descriptionBtn" class="sub-btn">توضیحات</button>
-            <button id="loginBtn" class="sub-btn">ورود</button>
-        </div>
-        
-        <!-- متن توضیحات و ورود -->
+
+        <!-- متن توضیحات -->
         <div id="textContent">
             در این پروژه میتونید با کد رفرال پاداش مازاد دریافت کنید
             〽️کد: cIGKHn697
@@ -124,25 +94,11 @@
             اگر توضیحاتی راجب پروژه خواستید 🌟
             <a href="https://t.me/AirdropBeFarsi/12806" target="_blank">لینک تلگرام</a>
 
-            توجه کنید که پروژه دپین است و نیاز به اکستنشن برای ماینینگ دارد که لینک آن در کانال تلگرام قرار داده شده است.
+            توجه کنید که پروژه دپین است و نیاز به اکستنشن برای ماینینگ دارد که لینک آن در کانال تلگرام قرار داده شده است
         </div>
         
         <!-- دکمه بازگشت به صفحه اصلی -->
         <button class="back-btn" onclick="window.history.back()">بازگشت به صفحه اصلی</button>
     </div>
-
-    <script>
-        // متن توضیحات دکمه 1
-        const textContent = document.getElementById('textContent');
-        
-        document.getElementById('descriptionBtn').addEventListener('click', () => {
-            textContent.innerHTML = `توضیحات مربوط به دکمه 1: این دکمه برای نمایش اطلاعات اولیه استفاده می‌شود.`;
-        });
-
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            // هدایت کاربر به لینک ثبت‌نام
-            window.location.href = "https://zero.kaisar.io/register?ref=cIGKHn697";
-        });
-    </script>
 </body>
 </html>

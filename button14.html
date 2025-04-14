@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دکمه 1</title>
+    <title>Monad</title>
     <style>
-        /* detail.css */
-
         * {
             margin: 0;
             padding: 0;
@@ -15,8 +13,8 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* پس‌زمینه تم دارک */
-            color: #fff; /* رنگ متن */
+            background-color: #121212;
+            color: #fff;
             text-align: center;
             padding: 20px;
         }
@@ -24,18 +22,17 @@
         .content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px;
-            background-color: #1e1e1e; /* پس‌زمینه محتوا */
+            padding: 40px 20px;
+            background-color: #1e1e1e;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* سایه */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         h1 {
             margin-bottom: 20px;
-            color: #ecf0f1; /* رنگ عنوان */
+            color: #ecf0f1;
         }
 
-        /* قسمت متن توضیحات */
         #textContent {
             margin-top: 30px;
             padding: 20px;
@@ -43,63 +40,59 @@
             border-radius: 8px;
             color: #ecf0f1;
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.7;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* دکمه ورود */
-        .sub-btn {
+        #textContent a {
+            display: block;
+            margin-top: 10px;
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #textContent a:hover {
+            text-decoration: underline;
+        }
+
+        /* دکمه‌ها */
+        .sub-btn, .back-btn {
+            width: 100%;
+            max-width: 300px;
             padding: 12px 25px;
-            background-color: #2980b9;
+            margin: 12px auto;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             color: #fff;
             font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
+            display: block;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .sub-btn {
+            background-color: #2980b9;
         }
 
         .sub-btn:hover {
-            background-color: #3498db; /* رنگ هاور */
+            background-color: #3498db;
         }
 
         .sub-btn:active {
-            transform: translateY(2px); /* افکت فشار */
+            transform: translateY(2px);
         }
 
-        /* دکمه بازگشت به صفحه اصلی */
         .back-btn {
-            padding: 12px 25px;
             background-color: #e74c3c;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
         }
 
         .back-btn:hover {
-            background-color: #c0392b; /* رنگ هاور */
+            background-color: #c0392b;
         }
 
         .back-btn:active {
-            transform: translateY(2px); /* افکت فشار */
-        }
-
-        a {
-            color: #27ae60;
-            text-decoration: none;
-            font-size: 16px;
-            margin-top: 20px;
-            display: block;
-            text-align: center;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            transform: translateY(2px);
         }
     </style>
 </head>
@@ -107,23 +100,19 @@
     <div class="content">
         <h1>Monad</h1>
 
-        <!-- متن توضیحات -->
         <div id="textContent">
-          شخصا معتقدم این پروژه همستر تست نتیاس و شما باید با دی اپاش تعامل کنید که به عبارتی توکن تستی بگیرید و در پروژه های زیر مجموعش باشید و موارد دیگر و در کل آموزشش یکم طولانیه و سعی کنید با هرکدوم از موارد که میخواید تعامل کنید و من خودم بیشتر تعاملم با ولت هاها هست
-          
+            شخصا معتقدم این پروژه همستر تست نتیاس و شما باید با دی اپاش تعامل کنید که به عبارتی توکن تستی بگیرید و در پروژه های زیر مجموعش باشید و موارد دیگر و در کل آموزشش یکم طولانیه و سعی کنید با هرکدوم از موارد که میخواید تعامل کنید و من خودم بیشتر تعاملم با ولت هاها هست
+            
             <a href="https://t.me/AirdropBeFarsi/13520" target="_blank">آموزش کلی پروژه</a> 
             <a href="https://t.me/AirdropBeFarsi/13216" target="_blank">توضیحات و لینک ها</a> 
             <a href="https://t.me/AirdropBeFarsi/13373" target="_blank">Haha Wallet</a> 
-
         </div>
-        
-        <!-- دکمه ورود -->
+
         <button class="sub-btn" onclick="window.location.href='https://testnet.monad.xyz'">توکن تستی و تسک روزانه</button>
         <button class="sub-btn" onclick="window.location.href='https://monad.ambient.finance/trade/market/chain=0x279f&tokenA=0x836047a99e11f376522b447bffb6e3495dd0637c&tokenB=0x0000000000000000000000000000000000000000'">سواپ و خرید توکن</button>
         <button class="sub-btn" onclick="window.location.href='https://magiceden.io/'">خرید و فروش ان اف تی</button>
         <button class="sub-btn" onclick="window.location.href='https://stake.apr.io/'">استیک</button>
-        
-        <!-- دکمه بازگشت به صفحه اصلی -->
+
         <button class="back-btn" onclick="window.history.back()">بازگشت به صفحه اصلی</button>
     </div>
 </body>

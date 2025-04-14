@@ -4,7 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صفحه دکمه‌ها</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* style.css */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* پس‌زمینه تم دارک */
+            color: #fff; /* رنگ متن */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button-container {
+            margin: 10px;
+        }
+
+        /* دکمه‌ها */
+        .main-btn {
+            width: 200px;
+            height: 70px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2c3e50, #34495e); /* گرادیانت */
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* سایه برای دکمه‌ها */
+        }
+
+        .main-btn:hover {
+            transform: translateY(-5px); /* افکت جابجایی هنگام هاور */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #34495e, #2c3e50); /* تغییر رنگ هنگام هاور */
+        }
+
+        .main-btn:active {
+            transform: translateY(2px); /* افکت فشار دکمه */
+        }
+
+        /* لینک داخل دکمه */
+        .button-link {
+            text-decoration: none;
+            color: white;
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,12 +80,12 @@
             </div>
             <div class="button-container">
                 <button class="main-btn">
-                    <a href="button2.html" class="button-link">دکمه 2</a>
+                    <a href="button2.html" class="button-link">Kar</a>
                 </button>
             </div>
             <div class="button-container">
                 <button class="main-btn">
-                    <a href="button3.html" class="button-link">دکمه 3</a>
+                    <a href="button3.html" class="button-link">sar</a>
                 </button>
             </div>
             <!-- ادامه ۳۰ دکمه -->

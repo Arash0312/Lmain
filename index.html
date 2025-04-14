@@ -1,104 +1,100 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نفوذ به سیستم</title>
-    <style>
-        body {
-            background-color: black;
-            color: lime;
-            font-family: monospace;
-            font-size: 16px;
-            padding: 20px;
-            overflow: hidden;
-            user-select: none;
-            text-align: center;
-            direction: rtl;
-        }
-        .warning {
-            color: red;
-            font-weight: bold;
-            text-align: center;
-            font-size: 24px;
-            margin-top: 20%;
-        }
-        #passwordInput {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: black;
-            border: 1px solid lime;
-            color: lime;
-            font-size: 20px;
-            padding: 10px;
-            display: none;
-        }
-    </style>
-</head>
-<body oncontextmenu="return false;" onkeydown="return disableKeys(event);">
-    <div id="terminal">اطلاعات شخصی شما برای سازنده ارسال شد.
-    </div>
-    <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید" onkeydown="checkPassword(event)">
-    <script>
-        const passwordInput = document.getElementById("passwordInput");
+/* تنظیمات عمومی */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
 
-        setTimeout(() => {
-            passwordInput.style.display = 'block';
-            passwordInput.focus();
-        }, 2000);
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
 
-        function disableMouse() {
-            document.onmousemove = function(event) {
-                event.preventDefault();
-            };
-            document.ontouchmove = function(event) {
-                event.preventDefault();
-            };
-        }
-        disableMouse();
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
 
-        function disableKeys(event) {
-            if ([116, 123, 27, 17, 18, 91].includes(event.keyCode) || (event.ctrlKey && [73, 85, 87, 83, 68].includes(event.keyCode))) {
-                event.preventDefault();
-                event.stopPropagation();
-                return false;
-            }
-        }
-        
-        function goFullscreen() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) {
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) {
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) {
-                document.documentElement.msRequestFullscreen();
-            }
-        }
-        
-        setTimeout(goFullscreen, 500);
-        
-        window.history.pushState(null, null, document.URL);
-        window.addEventListener('popstate', function () {
-            window.history.pushState(null, null, document.URL);
-        });
-        
-        let audio = new Audio('https://www.myinstants.com/media/sounds/windows-xp-error.mp3');
-        setTimeout(() => { audio.play(); }, 1000);
-        
-        function checkPassword(event) {
-            if (event.key === 'Enter') {
-                if (passwordInput.value === '1111') {
-                    alert('سیستم بازیابی شد!');
-                    location.reload();
-                } else {
-                    alert('رمز عبور نادرست است!');
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+/* استایل دکمه‌های اصلی */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.main-btn:hover {
+    transform: translateY(-5px);
+}
+
+/* استایل دکمه‌های داخلی */
+.inner-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    display: none;
+}
+
+.main-btn:hover .inner-btns {
+    display: flex;
+}
+
+.sub-btn {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.sub-btn:hover {
+    background-color: #666;
+}
+
+/* تم دارک */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.main-btn {
+    background-color: #333;
+    color: #fff;
+}
+
+.sub-btn {
+    background-color: #444;
+    color: #fff;
+}
+
+.sub-btn:hover {
+    background-color: #666;
+}

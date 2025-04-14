@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Builder</title>
     <style>
-        /* style.css */
-
         * {
             margin: 0;
             padding: 0;
@@ -15,49 +13,47 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* پس‌زمینه تم دارک */
-            color: #fff; /* رنگ متن */
+            background-color: #121212;
+            color: #fff;
             text-align: center;
             padding: 20px;
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* دو ستون در هر ردیف */
             gap: 20px;
+            justify-items: center;
         }
 
         .button-container {
-            margin: 10px;
+            width: 100%;
         }
 
-        /* دکمه‌ها */
         .main-btn {
             width: 200px;
             height: 70px;
             border: none;
             border-radius: 10px;
-            background: linear-gradient(135deg, #2c3e50, #34495e); /* گرادیانت */
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* سایه برای دکمه‌ها */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .main-btn:hover {
-            transform: translateY(-5px); /* افکت جابجایی هنگام هاور */
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #34495e, #2c3e50); /* تغییر رنگ هنگام هاور */
+            background: linear-gradient(135deg, #34495e, #2c3e50);
         }
 
         .main-btn:active {
-            transform: translateY(2px); /* افکت فشار دکمه */
+            transform: translateY(2px);
         }
 
-        /* لینک داخل دکمه */
         .button-link {
             text-decoration: none;
             color: white;
@@ -71,65 +67,62 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <!-- دکمه‌ها -->
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button1.html" class="button-link">Kaisar'A'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="Button2.html" class="button-link">Teneo'A'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button3.html" class="button-link">ZarPay'B'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button4.html" class="button-link">Humanity'C'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button5.html" class="button-link">Open Loop'A'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button6.html" class="button-link">Tea Fi'A'</a>
-                </button>
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button7.html" class="button-link">Xos'A'</a>
-                </button>                
-            </div>            
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button8.html" class="button-link">Public Ai'A'</a>
-                </button>                
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button9.html" class="button-link">Portal'B'</a>
-                </button>                
-            </div>            
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button10.html" class="button-link">MagicTown'A'</a>
-                </button>                
-            </div>
-            <div class="button-container">
-                <button class="main-btn">
-                    <a href="button9.html" class="button-link">My Gate'A'</a>
-                </button>                
-            </div>                        
-            <!-- ادامه ۳۰ دکمه -->
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button1.html" class="button-link">Kaisar'A'</a>
+            </button>
         </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="Button2.html" class="button-link">Teneo'A'</a>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button3.html" class="button-link">ZarPay'B'</a>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button4.html" class="button-link">Humanity'C'</a>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button5.html" class="button-link">Open Loop'A'</a>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button6.html" class="button-link">Tea Fi'A'</a>
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button7.html" class="button-link">Xos'A'</a>
+            </button>                
+        </div>            
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button8.html" class="button-link">Public Ai'A'</a>
+            </button>                
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button9.html" class="button-link">Portal'B'</a>
+            </button>                
+        </div>            
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button10.html" class="button-link">MagicTown'A'</a>
+            </button>                
+        </div>
+        <div class="button-container">
+            <button class="main-btn">
+                <a href="button11.html" class="button-link">My Gate'A'</a>
+            </button>                
+        </div>
+        <!-- ادامه دکمه‌ها همین‌طور اضافه کن -->
     </div>
 </body>
 </html>

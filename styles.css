@@ -1,67 +1,56 @@
-/* تنظیمات عمومی */
+/* style.css */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #fff;
-    margin: 0;
-    padding: 0;
+    text-align: center;
+    padding: 20px;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: center;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
 }
 
-/* استایل دکمه‌های اصلی */
 .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 10px;
 }
 
 .main-btn {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
     padding: 20px;
-    font-size: 18px;
-    text-align: center;
-    width: 200px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
+    font-size: 16px;
 }
 
 .main-btn:hover {
-    transform: translateY(-5px);
+    background-color: #666;
 }
 
-/* استایل دکمه‌های داخلی */
+.button-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* برای صفحات دکمه‌ها */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .inner-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    left: 0;
-    display: none;
-}
-
-.main-btn:hover .inner-btns {
-    display: flex;
+    margin-top: 20px;
 }
 
 .sub-btn {
@@ -79,22 +68,22 @@ body {
     background-color: #666;
 }
 
-/* تم دارک */
-body {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-.main-btn {
+#textContent {
+    margin-top: 20px;
     background-color: #333;
     color: #fff;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-.sub-btn {
-    background-color: #444;
-    color: #fff;
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
 }
 
-.sub-btn:hover {
-    background-color: #666;
+a:hover {
+    text-decoration: underline;
 }

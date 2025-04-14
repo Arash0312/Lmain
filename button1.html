@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دکمه 1</title>
+    <link rel="stylesheet" href="detail.css">
+</head>
+<body>
+    <div class="content">
+        <h1>دکمه 1</h1>
+        
+        <!-- دکمه‌های توضیحات و ورود -->
+        <div class="inner-btns">
+            <button id="descriptionBtn" class="sub-btn">توضیحات</button>
+            <button id="loginBtn" class="sub-btn">ورود</button>
+        </div>
+        
+        <!-- متن توضیحات و ورود -->
+        <div id="textContent">
+            <!-- متن بسته به انتخاب کاربر اینجا نمایش داده می‌شود -->
+        </div>
+        
+        <a href="index.html">بازگشت به صفحه اصلی</a>
+    </div>
+
+    <script>
+        // متن توضیحات دکمه 1
+        const textContent = document.getElementById('textContent');
+        
+        document.getElementById('descriptionBtn').addEventListener('click', () => {
+            textContent.innerHTML = `توضیحات مربوط به دکمه 1: این دکمه برای نمایش اطلاعات اولیه استفاده می‌شود.`;
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            textContent.innerHTML = `شما وارد صفحه ورود شدید. لطفاً اطلاعات خود را وارد کنید.`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>دکمه 1</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #ecf0f1;
+    }
+
+    #textContent {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #2c3e50;
+      border-radius: 8px;
+      color: #ecf0f1;
+      font-size: 16px;
+      line-height: 1.5;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .sub-btn, .back-btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .sub-btn {
+      background-color: #2980b9;
+    }
+
+    .sub-btn:hover {
+      background-color: #3498db;
+    }
+
+    .back-btn {
+      background-color: #e74c3c;
+    }
+
+    .back-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .sub-btn:active,
+    .back-btn:active {
+      transform: translateY(2px);
+    }
+
+    a {
+      color: #27ae60;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Somnia</h1>
+
+    <div id="textContent">
+      این پروژه یکی دیگه از سبکای تست نت همراه توکن تستیه و شیوه کار تغییر خاصی پیدا نکرده و آموزش های لازم و خاصی نداریم و فقط باید ولتتون فعال باشه
+    </div>
+
+    <div class="button-grid">
+      <button class="sub-btn" onclick="window.location.href='https://quest.somnia.network/referrals/24C43650'">ثبت نام و توکن تستی و سواپ</button>
+      <button class="sub-btn" onclick="window.location.href='https://avatar-v2.somnia.network/'">ساخت شخصیت</button>
+      <button class="sub-btn" onclick="window.location.href='https://quills.fun/'">چت کردن</button>
+      <button class="back-btn" onclick="window.history.back()">بازگشت به صفحه اصلی</button>
+    </div>
+  </div>
+</body>
+</html>

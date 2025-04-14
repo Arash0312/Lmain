@@ -68,23 +68,24 @@
             line-height: 70px;
         }
 
-        /* راهنمای بالای صفحه */
+        /* دکمه راهنما در گوشه بالا سمت راست */
         .help-btn-container {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: #34495e;
+            border-radius: 8px;
         }
 
         .help-btn {
-            background-color: #34495e;
-            color: white;
             padding: 10px 20px;
-            border-radius: 8px;
+            color: white;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
             text-decoration: none;
+            display: block;
+            text-align: center;
         }
 
         .help-btn:hover {
@@ -93,7 +94,7 @@
     </style>
 </head>
 <body>
-    <!-- دکمه راهنما در بالا سمت راست -->
+    <!-- دکمه راهنما در بالای صفحه سمت راست -->
     <div class="help-btn-container">
         <a href="help.html" class="help-btn">راهنما</a>
     </div>

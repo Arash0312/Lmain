@@ -47,6 +47,27 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* دکمه ورود */
+        .sub-btn {
+            padding: 12px 25px;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-btn:hover {
+            background-color: #3498db; /* رنگ هاور */
+        }
+
+        .sub-btn:active {
+            transform: translateY(2px); /* افکت فشار */
+        }
+
         /* دکمه بازگشت به صفحه اصلی */
         .back-btn {
             padding: 12px 25px;
@@ -84,7 +105,7 @@
 </head>
 <body>
     <div class="content">
-        <h1>دکمه 1</h1>
+        <h1>Kaisar</h1>
 
         <!-- متن توضیحات -->
         <div id="textContent">
@@ -94,9 +115,12 @@
             اگر توضیحاتی راجب پروژه خواستید 🌟
             <a href="https://t.me/AirdropBeFarsi/12806" target="_blank">لینک تلگرام</a>
 
-            توجه کنید که پروژه دپین است و نیاز به اکستنشن برای ماینینگ دارد که لینک آن در کانال تلگرام قرار داده شده است
+            توجه کنید که پروژه دپین است و نیاز به اکستنشن برای ماینینگ دارد که لینک آن در کانال تلگرام قرار داده شده است.
         </div>
         
+        <!-- دکمه ورود -->
+        <button class="sub-btn" onclick="window.location.href='https://zero.kaisar.io/register?ref=cIGKHn697'">ورود</button>
+
         <!-- دکمه بازگشت به صفحه اصلی -->
         <button class="back-btn" onclick="window.history.back()">بازگشت به صفحه اصلی</button>
     </div>

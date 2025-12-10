@@ -1,221 +1,93 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Builder</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<title>Free Daily Cases</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
+    body {
+        margin: 0;
+        background: #0a0a0f;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        padding: 30px;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            padding-top: 80px; /* فاصله بیشتر از بالا برای جلوگیری از تداخل */
-        }
+    h1 {
+        font-size: 42px;
+        font-weight: 600;
+        margin-top: 10px;
+        color: #ff2882;
+        text-shadow: 0 0 15px #ff2882;
+    }
 
-        .button-container {
-            width: 100%;
-        }
+    .box {
+        background: linear-gradient(145deg, #1a1a22, #0e0e14);
+        border-radius: 18px;
+        width: 350px;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(255, 0, 107, 0.4);
+        border: 1px solid #ff2882;
+    }
 
-        .main-btn {
-            width: 100%;
-            max-width: 180px;
-            height: 60px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+    .btn {
+        display: block;
+        width: 80%;
+        margin: 15px auto;
+        padding: 15px;
+        background: #ff2882;
+        border-radius: 10px;
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        transition: 0.25s;
+        box-shadow: 0 4px 12px rgba(255, 0, 120, 0.3);
+    }
 
-        .main-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #34495e, #2c3e50);
-        }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 0, 120, 0.8);
+    }
 
-        .main-btn:active {
-            transform: translateY(2px);
-        }
+    .footer-text {
+        font-size: 14px;
+        margin-top: 25px;
+        opacity: 0.7;
+    }
 
-        .button-link {
-            text-decoration: none;
-            color: white;
-            display: block;
-            height: 100%;
-            width: 100%;
-            text-align: center;
-            line-height: 70px;
-        }
-
-        /* دکمه راهنما در گوشه بالا سمت راست */
-        .help-btn-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #1abc9c; /* رنگ متفاوت ولی هماهنگ با طراحی */
-            border-radius: 8px;
-            padding: 10px 20px;
-        }
-
-        .help-btn {
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-
-        .help-btn:hover {
-            background-color: #16a085;
-        }
-    </style>
+    .update-box {
+        margin-top: 25px;
+        font-size: 18px;
+        background: #11151d;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px dashed #ff2882;
+        width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 10px rgba(255, 0, 120, 0.3);
+    }
+</style>
 </head>
 <body>
-    <!-- دکمه راهنما در بالای صفحه سمت راست -->
-    <div class="help-btn-container">
-        <a href="help.html" class="help-btn">راهنما</a>
-    </div>
 
-    <div class="container">
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button1.html" class="button-link">Kaisar'A'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="Button2.html" class="button-link">Teneo'A'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button3.html" class="button-link">ZarPay'B'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button4.html" class="button-link">Humanity'C'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button5.html" class="button-link">Open Loop'A'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button6.html" class="button-link">Tea Fi'A'</a>
-            </button>
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button7.html" class="button-link">Xos'A'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button19.html" class="button-link">Taker'A'</a>
-            </button>                
-        </div>        
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button8.html" class="button-link">Public Ai'A'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button9.html" class="button-link">Portal'B'</a>
-            </button>                
-        </div>            
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button10.html" class="button-link">MagicTown'A'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button11.html" class="button-link">My Gate'A'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button12.html" class="button-link">Kite Ai'A'</a>
-            </button>                
-        </div>    
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button13.html" class="button-link">Hub Ai'A'</a>
-            </button>                
-        </div>
-         <div class="button-container">
-            <button class="main-btn">
-                <a href="button14.html" class="button-link">Monad'C'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button15.html" class="button-link">Bee'A'</a>
-            </button>                
-        </div>
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button16.html" class="button-link">OgLabs'C'</a>
-            </button>                
-        </div> 
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="Button17.html" class="button-link">Bilions'A'</a>
-            </button>                
-        </div>  
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button18.html" class="button-link">Flow3'A'</a>
-            </button>                
-        </div>         
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button20.html" class="button-link">CoreSky'A'</a>
-            </button>                
-        </div> 
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button21.html" class="button-link">Cryplex'A'</a>
-            </button>                
-        </div>    
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button22.html" class="button-link">Somnia'C'</a>
-            </button>                
-        </div>   
-        <div class="button-container">
-            <button class="main-btn">
-                <a href="button23.html" class="button-link">Solix'A'</a>
-            </button>                
-        </div>           
-    </div>
+<h1>Free Daily Cases 🎁</h1>
+
+<div class="box">
+    <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA">Epic Gifts</a>
+    <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953">Grab Gifts</a>
+    <a class="btn" href="http://t.me/onecase_play_bot/app?startapp=BF0245DA">OneCase</a>
+    <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953">MajesticGame</a>
+    <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy">Virus</a>
+    <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953">GorillaCase</a>
+</div>
+
+<div class="update-box">More updates coming soon ✨</div>
+
+<div class="footer-text">Telegram Channel: <a href="https://t.me/ArshBemola" style="color:#ff2882;">@ArshBemola</a></div>
+
 </body>
 </html>

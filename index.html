@@ -33,7 +33,7 @@
     </section>
 
     <!-- Background Music -->
-    <audio id="bg-music" preload="auto"></audio>
+    <audio id="bg-music" src="narvent_-_fainted.mp3" preload="auto" loop></audio>
 
     <!-- Update Box -->
     <div class="update-box">✨ More updates coming soon</div>
@@ -52,32 +52,16 @@
     const music = document.getElementById("bg-music");
     const toggle = document.getElementById("music-toggle");
 
-    // آرایه آهنگ‌ها
-    const tracks = [
-      "narvent_-_fainted.mp3",
-      "track2.mp3",
-      "track3.mp3",
-      "track4.mp3",
-      "track5.mp3",
-      "track6.mp3"
-    ];
-
-    // تابع پخش رندوم
-    function playRandomTrack() {
-      const randomIndex = Math.floor(Math.random() * tracks.length);
-      music.src = tracks[randomIndex];
-      music.play().catch(() => {});
-    }
-
-    // شروع وقتی صفحه لود شد
+    // Attempt autoplay
     window.addEventListener("load", () => {
-      playRandomTrack();
+      music.play().catch(() => {});
     });
 
-    // وقتی آهنگ تموم شد، بعدی رندوم پخش بشه
-    music.addEventListener("ended", playRandomTrack);
+    // Play on first user interaction (required by mobile browsers)
+    document.body.addEventListener("click", () => {
+      music.play().catch(() => {});
+    }, { once: true });
 
-    // کنترل دکمه موزیک
     toggle.addEventListener("click", () => {
       if (music.paused){
         music.play();
@@ -87,11 +71,6 @@
         toggle.textContent = "🔊";
       }
     });
-
-    // Play on first user interaction (برای موبایل)
-    document.body.addEventListener("click", () => {
-      music.play().catch(() => {});
-    }, { once: true });
   </script>
 
 </body>

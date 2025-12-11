@@ -14,8 +14,8 @@
 
   <main class="card">
 
-    <!-- Music Toggle -->
-    <button id="music-toggle">🔊</button>
+    <!-- Music Toggle with text -->
+    <button id="music-toggle">🔊 <span>Play Music</span></button>
 
     <!-- Header -->
     <h1>Free Daily Cases</h1>
@@ -50,23 +50,24 @@
     const music = document.getElementById("bg-music");
     const toggle = document.getElementById("music-toggle");
 
-    // Attempt autoplay
+    // Attempt autoplay on load
     window.addEventListener("load", () => {
       music.play().catch(() => {});
     });
 
-    // Play on first user interaction (required by mobile browsers)
-    document.body.addEventListener("click", () => {
+    // Ensure music plays on first user interaction (mobile-friendly)
+    document.body.addEventListener("pointerdown", () => {
       music.play().catch(() => {});
     }, { once: true });
 
+    // Toggle button play/pause
     toggle.addEventListener("click", () => {
       if (music.paused){
         music.play();
-        toggle.textContent = "🔇";
+        toggle.textContent = "🔇 Stop Music";
       } else {
         music.pause();
-        toggle.textContent = "🔊";
+        toggle.textContent = "🔊 Play Music";
       }
     });
   </script>

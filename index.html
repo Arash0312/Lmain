@@ -1,207 +1,185 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Free Daily Cases — Mini App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini App</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
 
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+<style>
 
-  <style>
-    :root{
-      --dark-bg1: #1a1a1a;
-      --dark-bg2: #0f0f0f;
-      --accent-orange: #ff7f50;
-      --glow-orange: #ff6600;
-      --text: #fff;
-    }
+:root{
+  --bg: #050506;
+  --card: rgba(20,20,24,0.65);
+  --text: #ffffff;
+  --border: rgba(255,255,255,0.06);
+  --btn-bg: #1d1d22;
+  --btn-hover: #26262b;
+  --muted: #b9b9b9;
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      padding:0;
-      font-family: "Vazir", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color:var(--text);
-      background: url('./ChatGPT Image Dec 11, 2025, 02_40_17 PM.png') no-repeat center top fixed;
-      background-size: cover;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      min-height:100vh;
-    }
+  /* نور خیلی ظریف */
+  --soft-glow: rgba(0,0,0,0.55);
+}
 
-    .overlay {
-      width:100%;
-      min-height:100vh;
-      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 100%);
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      padding:28px 16px;
-    }
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  font-family:"Vazir", system-ui;
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+  padding-top:30px;
+}
 
-    .card {
-      width:100%;
-      max-width:400px;
-      margin-top:30px;
-      border-radius:20px;
-      background: linear-gradient(180deg, var(--dark-bg1), var(--dark-bg2));
-      border: 1px solid rgba(255,127,80,0.25);
-      box-shadow: 0 12px 50px rgba(0,0,0,0.7), 0 0 40px rgba(255,127,80,0.2) inset;
-      padding:20px;
-      backdrop-filter: blur(12px) saturate(1.2);
-      transition: transform 0.3s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-    }
+.card{
+  width:100%;
+  max-width:420px;
+  padding:26px;
+  border-radius:20px;
+  background:var(--card);
+  backdrop-filter: blur(18px) saturate(130%);
+  border:1px solid var(--border);
+  position:relative;
+  box-shadow: 0 15px 60px rgba(0,0,0,0.55);
+}
 
-    header h1{
-      margin:8px 0 12px;
-      font-size:32px;
-      color:var(--accent-orange);
-      letter-spacing:1px;
-      text-shadow: 0 0 20px #ff7f5088;
-      font-weight:800;
-      text-align:center;
-    }
+/* دکمه میوت */
+#music-toggle{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  color:var(--text);
+  font-size:20px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+  transition:0.2s;
+}
+#music-toggle:hover{
+  background:rgba(255,255,255,0.12);
+}
 
-    .links {
-      margin-top:16px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
+h1{
+  margin:55px 0 18px;
+  text-align:center;
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+  color:var(--text);
+}
 
-    .btn {
-      display:inline-block;
-      width:100%;
-      padding:14px 16px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:700;
-      font-size:16px;
-      color:#fff;
-      background: linear-gradient(90deg, var(--glow-orange), #ff3300);
-      box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);
-      border: 1px solid rgba(255,255,255,0.03);
-      text-align:center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      animation: neonBlink 2s infinite alternate;
-    }
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:20px;
+}
 
-    @keyframes neonBlink {
-      0% { box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);}
-      50% { box-shadow: 0 0 20px var(--glow-orange), 0 0 40px rgba(255,102,0,0.8);}
-      100% { box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);}
-    }
+/* دکمه‌های شیک با نور زیرین */
+.btn{
+  display:block;
+  padding:14px;
+  border-radius:14px;
+  background:var(--btn-bg);
+  border:1px solid var(--border);
+  color:var(--text);
+  font-weight:600;
+  text-align:center;
+  text-decoration:none;
 
-    .btn:hover {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
+  /* نور نرم زیر دکمه */
+  box-shadow:
+    0 4px 12px var(--soft-glow),
+    0 1px 0 rgba(255,255,255,0.03) inset;
 
-    .btn:active {
-      transform: scale(0.95);
-    }
+  transition:0.25s;
+}
+.btn:hover{
+  background:var(--btn-hover);
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.05) inset;
+  transform:translateY(-1px);
+}
 
-    .update-box{
-      margin-top:20px;
-      padding:12px;
-      border-radius:12px;
-      background: rgba(18,18,30,0.6);
-      border: 1px dashed rgba(255,127,80,0.2);
-      text-align:center;
-      color: #ffd9b3;
-      font-size:15px;
-      box-shadow: 0 6px 28px rgba(255,100,0,0.25) inset;
-    }
+.update-box{
+  margin-top:22px;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
 
-    footer{
-      margin-top:16px;
-      text-align:center;
-      font-size:14px;
-      color:rgba(255,255,255,0.88);
-    }
-    footer a{ color: #ffb87f; text-decoration:none; font-weight:700 }
-    footer a:hover{ text-decoration:underline }
+footer{
+  margin-top:18px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+footer a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+}
 
-    .music-control {
-      margin:15px 0;
-      text-align:center;
-    }
-
-    .music-btn {
-      display:inline-block;
-      padding:8px 16px;
-      border-radius:12px;
-      background: linear-gradient(90deg, #ff7f50, #ff4500);
-      color:#fff;
-      font-weight:700;
-      cursor:pointer;
-      text-shadow: 0 0 5px #ff7f50;
-      box-shadow: 0 0 10px #ff7f50, 0 0 20px rgba(255,127,80,0.5);
-      transition: all 0.3s ease;
-    }
-    .music-btn:hover{
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #ff7f50, 0 0 30px rgba(255,127,80,0.7);
-    }
-
-    @media (max-width:420px){
-      header h1{ font-size:28px }
-      .btn{ font-size:15px; padding:12px }
-      .card{ margin-top:24px; padding:18px }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="overlay">
-    <main class="card" role="main" aria-label="Free Daily Cases">
-      <header>
-        <h1>Free Daily Cases</h1>
-      </header>
 
-      <section class="links" aria-label="links">
-        <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank" rel="noopener">Epic Gifts</a>
-        <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953" target="_blank" rel="noopener">Grab Gifts</a>
-        <a class="btn" href="http://t.me/onecase_play_bot/app?startapp=BF0245DA" target="_blank" rel="noopener">OneCase</a>
-        <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953" target="_blank" rel="noopener">GorillaCase</a>
-        <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953" target="_blank" rel="noopener">MajesticGame</a>
-        <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank" rel="noopener">Virus</a>
-        <a class="btn" href="http://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank" rel="noopener">MellGifts</a>
-        <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank" rel="noopener">ChanceApp</a>
-      </section>
+<main class="card">
 
-      <div class="music-control">
-        <audio id="bg-music" src="narvent_-_fainted.mp3" loop></audio>
-        <button class="music-btn" id="music-toggle">Play🔊</button>
-      </div>
+  <!-- mute btn -->
+  <button id="music-toggle">🔇</button>
 
-      <div class="update-box">More updates coming soon ✨</div>
+  <h1>Free Daily Cases</h1>
 
-      <footer>
-        Telegram Channel: <a href="https://t.me/ArshBemola" target="_blank" rel="noopener">@ArshBemola</a>
-      </footer>
-    </main>
-  </div>
+  <section class="links">
+    <a class="btn" href="#">Epic Gifts</a>
+    <a class="btn" href="#">Grab Gifts</a>
+    <a class="btn" href="#">OneCase</a>
+    <a class="btn" href="#">GorillaCase</a>
+    <a class="btn" href="#">MajesticGame</a>
+    <a class="btn" href="#">Virus</a>
+    <a class="btn" href="#">MellGifts</a>
+    <a class="btn" href="#">ChanceApp</a>
+  </section>
 
-  <script>
-    const music = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('music-toggle');
+  <audio id="bg-music" src="narvent_-_fainted.mp3" loop></audio>
 
-    toggleBtn.addEventListener('click', () => {
-      if(music.paused){
-        music.play();
-        toggleBtn.textContent = '🔇';
-      } else {
-        music.pause();
-        toggleBtn.textContent = '🔊';
-      }
-    });
-  </script>
+  <div class="update-box">More updates coming soon…</div>
+
+  <footer>Telegram: <a href="https://t.me/ArshBemola">@ArshBemola</a></footer>
+
+</main>
+
+<script>
+const music = document.getElementById("bg-music");
+const toggle = document.getElementById("music-toggle");
+
+window.addEventListener("load", ()=> {
+  music.play().catch(()=>{});
+});
+
+toggle.addEventListener("click", ()=>{
+  if(music.paused){
+    music.play();
+    toggle.textContent="🔇";
+  }else{
+    music.pause();
+    toggle.textContent="🔊";
+  }
+});
+</script>
+
 </body>
 </html>

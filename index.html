@@ -1,116 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Free Daily Cases</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Free Daily Cases — Mini App</title>
 
-    body {
-        margin: 0;
-        background: radial-gradient(circle at top, #171729, #0b0b12 75%);
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-        padding: 10px;
-        max-width: 390px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    }
-        margin-left: auto;
-        margin-right: auto;
+  <!-- فونت فارسی (Vazir) -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --neon-1: #7d8bff;
+      --neon-2: #4b54d6;
+      --glass-bg: rgba(18,20,30,0.55);
+      --glass-border: rgba(111,125,255,0.25);
+      --accent: #8fa2ff;
+      --text: #ffffff;
     }
 
-    h1 {
-        font-size: 38px;
-        font-weight: 600;
-        margin-top: 5px;
-        color: #8fa2ff;
-        text-shadow: 0 0 18px #8fa2ffbb;
-        letter-spacing: 1px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      padding:0;
+      font-family: "Vazir", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background: url('./A_digital_illustration_in_neon-style_features_fina.png') no-repeat center top fixed;
+      background-size: cover;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      min-height:100vh;
     }
 
-    .box:hover {
-        box-shadow: 0 0 45px #8a9bff66;
+    /* نیم‌پرده روی تصویر برای خوانایی */
+    .overlay {
+      width:100%;
+      min-height:100vh;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:28px 16px;
     }
 
-    .box {
-        background: rgba(25, 25, 40, 0.55);
-        backdrop-filter: blur(14px);
-        border-radius: 20px;
-        width: 100%;
-        max-width: 360px;
-        margin: 18px auto;
-        padding: 18px;
-        box-shadow: 0 0 35px #6878ff44;
-        border: 1px solid #6f7dff66;
-        transition: 0.25s;
+    /* کانتینر مرکزی (card) */
+    .card {
+      width:100%;
+      max-width:390px;
+      margin-top:30px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(12,14,24,0.55), rgba(10,12,20,0.45));
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 40px rgba(7,9,20,0.6), 0 0 40px rgba(79,92,255,0.06) inset;
+      padding:18px;
+      backdrop-filter: blur(10px) saturate(1.1);
+    }
+
+    header h1{
+      margin:6px 0 8px;
+      font-size:30px;
+      color:var(--accent);
+      letter-spacing:1px;
+      text-shadow: 0 0 16px #7f95ff66;
+      font-weight:700;
+      text-align:center;
+    }
+
+    /* جعبه دکمه‌ها */
+    .links {
+      margin-top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
 
     .btn {
-        display: block;
-        width: 100%;
-        max-width: 330px;
-        margin: 12px auto;
-        padding: 14px;
-        background: linear-gradient(135deg, #7d8bff, #4b54d6);
-        border-radius: 12px;
-        font-size: 17px;
-        text-decoration: none;
-        color: white;
-        transition: 0.25s;
-        font-weight: 500;
-        box-shadow: 0 0 15px rgba(120, 140, 255, 0.35);
+      display:inline-block;
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:16px;
+      color:#fff;
+      background: linear-gradient(90deg, var(--neon-1), var(--neon-2));
+      box-shadow: 0 6px 18px rgba(75,84,214,0.18), 0 0 18px rgba(120,140,255,0.12);
+      border: 1px solid rgba(255,255,255,0.03);
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+      text-align:center;
     }
 
-    .btn:hover {
-        transform: scale(1.07);
-        box-shadow: 0 0 28px rgba(140, 155, 255, 0.8);
-        filter: brightness(1.15);
-    } {
-        transform: scale(1.06);
-        box-shadow: 0 0 25px rgba(110, 130, 255, 0.7);
+    .btn:active{ transform: translateY(1px) }
+    .btn:hover{
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 10px 40px rgba(75,84,214,0.28), 0 0 36px rgba(120,140,255,0.18);
+      filter:brightness(1.03);
     }
 
-    .update-box {
-        margin-top: 25px;
-        font-size: 16px;
-        background: rgba(25, 25, 40, 0.6);
-        padding: 12px;
-        border-radius: 12px;
-        border: 1px dashed #6f7dff88;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        box-shadow: 0 0 15px rgba(110, 130, 255, 0.25);
+    /* جعبه اطلاع‌رسانی */
+    .update-box{
+      margin-top:18px;
+      padding:10px;
+      border-radius:10px;
+      background: rgba(18,18,30,0.45);
+      border: 1px dashed rgba(111,125,255,0.12);
+      text-align:center;
+      color: #dfe8ff;
+      font-size:14px;
+      box-shadow: 0 6px 26px rgba(30,40,90,0.15) inset;
     }
 
-    .footer-text {
-        font-size: 14px;
-        margin-top: 20px;
-        opacity: 0.8;
+    footer{
+      margin-top:14px;
+      text-align:center;
+      font-size:13px;
+      color:rgba(255,255,255,0.86);
     }
-</style>
+    footer a{ color: #bfc9ff; text-decoration:none; font-weight:600 }
+    footer a:hover{ text-decoration:underline }
+
+    /* responsive */
+    @media (max-width:420px){
+      header h1{ font-size:28px }
+      .btn{ font-size:15px; padding:11px }
+      .card{ margin-top:22px; padding:16px }
+    }
+  </style>
 </head>
 <body>
+  <div class="overlay">
+    <main class="card" role="main" aria-label="Free Daily Cases">
+      <header>
+        <h1>Free Daily Cases</h1>
+      </header>
 
-<h1>Free Daily Cases</h1>
+      <section class="links" aria-label="links">
+        <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank" rel="noopener">Epic Gifts</a>
+        <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953" target="_blank" rel="noopener">Grab Gifts</a>
+        <a class="btn" href="http://t.me/onecase_play_bot/app?startapp=BF0245DA" target="_blank" rel="noopener">OneCase</a>
+        <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953" target="_blank" rel="noopener">GorilaCase</a>
+        <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953" target="_blank" rel="noopener">MajesticGame</a>
+        <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank" rel="noopener">Virus</a>
+        <a class="btn" href="http://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank" rel="noopener">MellGifts</a>
+        <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank" rel="noopener">ChanceApp</a>
+      </section>
 
-<div class="box">
-    <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA">Epic Gifts</a>
-    <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953">Grab Gifts</a>
-    <a class="btn" href="http://t.me/onecase_play_bot/app?startapp=BF0245DA">OneCase</a>
-    <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953">GorilaCase</a>
-    <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953">MajesticGame</a>
-    <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy">Virus</a>
-    <a class="btn" href="http://t.me/mellgifts_bot/app?startapp=LNJBIyLx">MellGifts</a>
-    <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953">ChanceApp</a>
-</div>
+      <div class="update-box">بزودی به‌روزرسانی‌های بیشتر ✨</div>
 
-<div class="update-box">More updates coming soon ✨</div>
-
-<div class="footer-text">Telegram Channel: <a href="https://t.me/ArshBemola" style="color:#5c6cff;">@ArshBemola</a></div>
-
+      <footer>
+        کانال تلگرام: <a href="https://t.me/ArshBemola" target="_blank" rel="noopener">@ArshBemola</a>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>

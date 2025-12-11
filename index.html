@@ -2,241 +2,213 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>Free Daily Cases — Mini App</title>
 
-  <!-- Fonts: Vazir for body, Playfair Display (stylish) for header -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#050506;
-      --card: rgba(18,18,20,0.72);
-      --text:#EEF2F5;
-      --muted:#9aa3ab;
-      --btn-bg:#141416;
-      --btn-border: rgba(255,255,255,0.03);
-      --neon: #1ea7ff;       /* رنگ نئونی زیر دکمه (می‌تونی به #9b5cff یا #00f0c5 تغییر بدی) */
-      --neon-opacity: 0.18;  /* شدت نور */
-      --accent: #ffd89b;
+      --neon:#00eaff;
+      --neon-opacity:0.2;
+      --text:#fff;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      padding:28px 16px;
-      background: linear-gradient(180deg, #040405 0%, #070708 100%);
-      font-family: "Vazir", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      padding:20px;
+      background:#060606;
+      font-family:"Vazir",sans-serif;
       color:var(--text);
       display:flex;
       justify-content:center;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Card */
     .card{
       width:100%;
       max-width:420px;
-      background:var(--card);
-      border-radius:20px;
+      background:rgba(255,255,255,0.04);
       padding:26px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.05);
+      backdrop-filter:blur(14px);
       position:relative;
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(14px) saturate(120%);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.6);
-      overflow:hidden;
     }
 
-    /* Mute button */
+    /* mute button */
     #music-toggle{
       position:absolute;
-      top:14px;
       right:14px;
+      top:14px;
       width:44px;
       height:44px;
-      border-radius:12px;
       border:none;
-      background: rgba(255,255,255,0.04);
-      color:var(--text);
+      border-radius:12px;
+      background:rgba(255,255,255,0.07);
+      color:#fff;
       font-size:18px;
+      cursor:pointer;
       display:flex;
       align-items:center;
       justify-content:center;
-      cursor:pointer;
-      backdrop-filter: blur(6px);
-      transition: background .18s ease, transform .12s ease;
     }
-    #music-toggle:hover{ background: rgba(255,255,255,0.08); transform:translateY(-2px); }
 
-    /* Header: different font + style */
-    header h1{
-      margin:52px 0 18px;
-      font-family: "Playfair Display", serif;
-      font-weight:700;
-      font-size:28px;
-      line-height:1;
-      color:var(--accent);
+    /* header */
+    h1{
+      margin-top:60px;
       text-align:center;
-      letter-spacing: -0.6px;
-      /* subtle soft halo for depth without being neon */
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      font-family:"Playfair Display",serif;
+      font-size:30px;
+      font-weight:700;
+      background:linear-gradient(90deg,#b8e8ff,#e5f9ff);
+      -webkit-background-clip:text;
+      color:transparent;
+      letter-spacing:1.5px;
     }
 
-    .links{ display:flex; flex-direction:column; gap:14px; margin-top:6px; }
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-top:20px;
+    }
 
-    /* buttons */
+    /* BUTTON */
     .btn{
       position:relative;
       display:block;
-      width:100%;
-      padding:14px 16px;
-      border-radius:14px;
       text-decoration:none;
-      color:var(--text);
-      font-weight:600;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--btn-border);
+      color:#fff;
+      background:rgba(255,255,255,0.05);
+      padding:14px;
       text-align:center;
-      transition: transform .16s ease, background .18s ease;
-      overflow:visible;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.05);
+      font-weight:600;
+      transition:0.2s;
     }
-
-    .btn:active{ transform: translateY(0.5px); }
 
     .btn:hover{
-      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-      transform: translateY(-3px);
+      transform:translateY(-3px);
+      background:rgba(255,255,255,0.08);
     }
 
-    /* NEON glow under the button (subtle, only under) */
+    /* neon under buttons */
     .btn::after{
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;               /* فاصله از پایین دکمه */
-      width: 84%;                  /* پهناى هاله — کمتر از دکمه تا لبه‌ها بیرون نزنه */
-      height: 14px;                /* ارتفاع هاله */
-      border-radius: 10px;
-      background: linear-gradient(90deg, rgba(30,167,255,0.0), var(--neon), rgba(30,167,255,0.0));
-      filter: blur(12px);
-      opacity: var(--neon-opacity);
-      pointer-events:none;
-      transition: opacity .18s ease, transform .18s ease;
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:-10px;
+      width:80%;
+      height:14px;
+      border-radius:20px;
+      background:linear-gradient(90deg,rgba(0,234,255,0),var(--neon),rgba(0,234,255,0));
+      filter:blur(12px);
+      opacity:var(--neon-opacity);
+      transition:0.2s;
     }
 
-    /* stronger on hover but still subtle */
     .btn:hover::after{
-      opacity: calc(var(--neon-opacity) * 1.6);
-      transform: translateX(-50%) translateY( -2px );
+      opacity:0.35;
+      bottom:-12px;
     }
-
-    /* small inner line to separate buttons visually */
-    .btn + .btn{ margin-top: 0; }
 
     /* update box */
     .update-box{
       margin-top:22px;
-      padding:14px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
-      color:var(--muted);
       text-align:center;
       font-size:14px;
-      letter-spacing: 0.2px;
+      color:#ccc;
+      background:rgba(255,255,255,0.05);
+      padding:10px;
+      border-radius:12px;
     }
 
-    /* bottom special signature - gradient text + icon */
+    /* SIGNATURE — FIXED */
     .signature{
-      margin-top:18px;
+      margin-top:26px;
       text-align:center;
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      align-items:center;
     }
 
     .signature .note{
-      font-size:14px;
-      color:var(--muted);
-      letter-spacing:0.3px;
+      font-size:13px;
+      opacity:0.7;
+      margin-bottom:6px;
     }
 
     .signature .handle{
-      font-family: "Inter", system-ui;
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.06);
+      backdrop-filter:blur(6px);
       font-weight:700;
-      font-size:16px;
-      background: linear-gradient(90deg, #9be15d 0%, #00f5a0 50%, #00d2ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing:0.6px;
-      padding:6px 14px;
-      border-radius:999px;
-      border: 1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
-    }
-
-    /* responsive tweaks */
-    @media (max-width:420px){
-      header h1{ font-size:22px; margin-top:36px; }
-      .btn{ padding:12px; font-size:15px; border-radius:12px; }
-      .btn::after{ bottom:-8px; height:12px; width:86%; filter: blur(10px); }
+      letter-spacing:0.8px;
+      background:linear-gradient(90deg,#99f7ff,#85ffe6,#c4ffe8);
+      -webkit-background-clip:text;
+      color:transparent;
     }
   </style>
 </head>
 
 <body>
-  <main class="card" role="main" aria-label="Free Daily Cases Mini App">
 
-    <!-- mute -->
-    <button id="music-toggle" aria-pressed="false" aria-label="Toggle background music">🔇</button>
+  <main class="card">
 
-    <header>
-      <h1>Free Daily Cases</h1>
-    </header>
+    <button id="music-toggle">🔊</button>
 
-    <section class="links" aria-label="links">
-      <!-- use HTTPS links; target _blank so they open in a new tab/context where allowed -->
-      <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank" rel="noopener noreferrer">Epic Gifts</a>
-      <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953" target="_blank" rel="noopener noreferrer">Grab Gifts</a>
-      <a class="btn" href="https://t.me/onecase_play_bot/app?startapp=BF0245DA" target="_blank" rel="noopener noreferrer">OneCase</a>
-      <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953" target="_blank" rel="noopener noreferrer">GorillaCase</a>
-      <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953" target="_blank" rel="noopener noreferrer">MajesticGame</a>
-      <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank" rel="noopener noreferrer">Virus</a>
-      <a class="btn" href="https://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank" rel="noopener noreferrer">MellGifts</a>
-      <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank" rel="noopener noreferrer">ChanceApp</a>
+    <h1>Free Daily Cases</h1>
+
+    <section class="links">
+      <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank">Epic Gifts</a>
+      <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953" target="_blank">Grab Gifts</a>
+      <a class="btn" href="https://t.me/onecase_play_bot/app?startapp=BF0245DA" target="_blank">OneCase</a>
+      <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953" target="_blank">GorillaCase</a>
+      <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953" target="_blank">MajesticGame</a>
+      <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank">Virus</a>
+      <a class="btn" href="https://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank">MellGifts</a>
+      <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank">ChanceApp</a>
     </section>
 
-    <audio id="bg-music" src="narvent_-_fainted.mp3" loop preload="auto"></audio>
+    <audio id="bg-music" src="narvent_-_fainted.mp3" preload="auto" loop></audio>
 
-    <div class="update-box">بزودی آپدیت‌های بیشتر ✨</div>
+    <div class="update-box">✨ بزودی آپدیت‌های بیشتر</div>
 
-    <div class="signature" aria-hidden="false">
-      <div class="note">برای دریافت زودهنگام اعلان‌ها عضو کانال شو</div>
+    <div class="signature">
+      <div class="note">به‌روزترین کیس‌ها و جوایز روزانه</div>
       <div class="handle">@ArshBemola</div>
     </div>
+
   </main>
 
   <script>
-    const music = document.getElementById('bg-music');
-    const toggle = document.getElementById('music-toggle');
+    const music = document.getElementById("bg-music");
+    const toggle = document.getElementById("music-toggle");
 
-    // initial attempt to autoplay (Telegram Mini App may allow); swallow errors
-    window.addEventListener('load', () => {
-      music.volume = 0.7;
-      music.play().catch(()=>{});
+    // Try to autoplay
+    window.addEventListener("load", () => {
+      music.play().catch(() => {});
     });
 
-    toggle.addEventListener('click', () => {
-      if (music.paused) {
-        music.play().catch(()=>{});
-        toggle.setAttribute('aria-pressed','true');
-        toggle.textContent = '🔇';
+    // Play on first user interaction (required by browsers)
+    document.body.addEventListener("click", () => {
+      music.play().catch(() => {});
+    }, { once: true });
+
+    toggle.addEventListener("click", () => {
+      if (music.paused){
+        music.play();
+        toggle.textContent = "🔇";
       } else {
         music.pause();
-        toggle.setAttri
+        toggle.textContent = "🔊";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,185 +1,242 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini App</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Free Daily Cases — Mini App</title>
 
-<style>
+  <!-- Fonts: Vazir for body, Playfair Display (stylish) for header -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-:root{
-  --bg: #050506;
-  --card: rgba(20,20,24,0.65);
-  --text: #ffffff;
-  --border: rgba(255,255,255,0.06);
-  --btn-bg: #1d1d22;
-  --btn-hover: #26262b;
-  --muted: #b9b9b9;
+  <style>
+    :root{
+      --bg:#050506;
+      --card: rgba(18,18,20,0.72);
+      --text:#EEF2F5;
+      --muted:#9aa3ab;
+      --btn-bg:#141416;
+      --btn-border: rgba(255,255,255,0.03);
+      --neon: #1ea7ff;       /* رنگ نئونی زیر دکمه (می‌تونی به #9b5cff یا #00f0c5 تغییر بدی) */
+      --neon-opacity: 0.18;  /* شدت نور */
+      --accent: #ffd89b;
+    }
 
-  /* نور خیلی ظریف */
-  --soft-glow: rgba(0,0,0,0.55);
-}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      padding:28px 16px;
+      background: linear-gradient(180deg, #040405 0%, #070708 100%);
+      font-family: "Vazir", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-*{box-sizing:border-box;}
-body{
-  margin:0;
-  padding:0;
-  background:var(--bg);
-  font-family:"Vazir", system-ui;
-  color:var(--text);
-  display:flex;
-  justify-content:center;
-  padding-top:30px;
-}
+    /* Card */
+    .card{
+      width:100%;
+      max-width:420px;
+      background:var(--card);
+      border-radius:20px;
+      padding:26px;
+      position:relative;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(14px) saturate(120%);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+      overflow:hidden;
+    }
 
-.card{
-  width:100%;
-  max-width:420px;
-  padding:26px;
-  border-radius:20px;
-  background:var(--card);
-  backdrop-filter: blur(18px) saturate(130%);
-  border:1px solid var(--border);
-  position:relative;
-  box-shadow: 0 15px 60px rgba(0,0,0,0.55);
-}
+    /* Mute button */
+    #music-toggle{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:none;
+      background: rgba(255,255,255,0.04);
+      color:var(--text);
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      backdrop-filter: blur(6px);
+      transition: background .18s ease, transform .12s ease;
+    }
+    #music-toggle:hover{ background: rgba(255,255,255,0.08); transform:translateY(-2px); }
 
-/* دکمه میوت */
-#music-toggle{
-  position:absolute;
-  top:14px;
-  right:14px;
-  width:42px;
-  height:42px;
-  border:none;
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
-  color:var(--text);
-  font-size:20px;
-  cursor:pointer;
-  backdrop-filter:blur(6px);
-  transition:0.2s;
-}
-#music-toggle:hover{
-  background:rgba(255,255,255,0.12);
-}
+    /* Header: different font + style */
+    header h1{
+      margin:52px 0 18px;
+      font-family: "Playfair Display", serif;
+      font-weight:700;
+      font-size:28px;
+      line-height:1;
+      color:var(--accent);
+      text-align:center;
+      letter-spacing: -0.6px;
+      /* subtle soft halo for depth without being neon */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
 
-h1{
-  margin:55px 0 18px;
-  text-align:center;
-  font-size:26px;
-  font-weight:800;
-  letter-spacing:-0.5px;
-  color:var(--text);
-}
+    .links{ display:flex; flex-direction:column; gap:14px; margin-top:6px; }
 
-.links{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  margin-top:20px;
-}
+    /* buttons */
+    .btn{
+      position:relative;
+      display:block;
+      width:100%;
+      padding:14px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--btn-border);
+      text-align:center;
+      transition: transform .16s ease, background .18s ease;
+      overflow:visible;
+    }
 
-/* دکمه‌های شیک با نور زیرین */
-.btn{
-  display:block;
-  padding:14px;
-  border-radius:14px;
-  background:var(--btn-bg);
-  border:1px solid var(--border);
-  color:var(--text);
-  font-weight:600;
-  text-align:center;
-  text-decoration:none;
+    .btn:active{ transform: translateY(0.5px); }
 
-  /* نور نرم زیر دکمه */
-  box-shadow:
-    0 4px 12px var(--soft-glow),
-    0 1px 0 rgba(255,255,255,0.03) inset;
+    .btn:hover{
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      transform: translateY(-3px);
+    }
 
-  transition:0.25s;
-}
-.btn:hover{
-  background:var(--btn-hover);
-  box-shadow:
-    0 6px 18px rgba(0,0,0,0.6),
-    0 1px 0 rgba(255,255,255,0.05) inset;
-  transform:translateY(-1px);
-}
+    /* NEON glow under the button (subtle, only under) */
+    .btn::after{
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;               /* فاصله از پایین دکمه */
+      width: 84%;                  /* پهناى هاله — کمتر از دکمه تا لبه‌ها بیرون نزنه */
+      height: 14px;                /* ارتفاع هاله */
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(30,167,255,0.0), var(--neon), rgba(30,167,255,0.0));
+      filter: blur(12px);
+      opacity: var(--neon-opacity);
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
 
-.update-box{
-  margin-top:22px;
-  padding:14px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid var(--border);
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-}
+    /* stronger on hover but still subtle */
+    .btn:hover::after{
+      opacity: calc(var(--neon-opacity) * 1.6);
+      transform: translateX(-50%) translateY( -2px );
+    }
 
-footer{
-  margin-top:18px;
-  text-align:center;
-  font-size:13px;
-  color:var(--muted);
-}
-footer a{
-  color:var(--text);
-  text-decoration:none;
-  font-weight:600;
-}
+    /* small inner line to separate buttons visually */
+    .btn + .btn{ margin-top: 0; }
 
-</style>
+    /* update box */
+    .update-box{
+      margin-top:22px;
+      padding:14px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      text-align:center;
+      font-size:14px;
+      letter-spacing: 0.2px;
+    }
+
+    /* bottom special signature - gradient text + icon */
+    .signature{
+      margin-top:18px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      align-items:center;
+    }
+
+    .signature .note{
+      font-size:14px;
+      color:var(--muted);
+      letter-spacing:0.3px;
+    }
+
+    .signature .handle{
+      font-family: "Inter", system-ui;
+      font-weight:700;
+      font-size:16px;
+      background: linear-gradient(90deg, #9be15d 0%, #00f5a0 50%, #00d2ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing:0.6px;
+      padding:6px 14px;
+      border-radius:999px;
+      border: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    }
+
+    /* responsive tweaks */
+    @media (max-width:420px){
+      header h1{ font-size:22px; margin-top:36px; }
+      .btn{ padding:12px; font-size:15px; border-radius:12px; }
+      .btn::after{ bottom:-8px; height:12px; width:86%; filter: blur(10px); }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="card" role="main" aria-label="Free Daily Cases Mini App">
 
-<main class="card">
+    <!-- mute -->
+    <button id="music-toggle" aria-pressed="false" aria-label="Toggle background music">🔇</button>
 
-  <!-- mute btn -->
-  <button id="music-toggle">🔇</button>
+    <header>
+      <h1>Free Daily Cases</h1>
+    </header>
 
-  <h1>Free Daily Cases</h1>
+    <section class="links" aria-label="links">
+      <!-- use HTTPS links; target _blank so they open in a new tab/context where allowed -->
+      <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank" rel="noopener noreferrer">Epic Gifts</a>
+      <a class="btn" href="https://t.me/Grab_Giftsbot/grabgifts?startapp=ref_5438078953" target="_blank" rel="noopener noreferrer">Grab Gifts</a>
+      <a class="btn" href="https://t.me/onecase_play_bot/app?startapp=BF0245DA" target="_blank" rel="noopener noreferrer">OneCase</a>
+      <a class="btn" href="https://t.me/GorillaCaseBot/app?startapp=r_5438078953" target="_blank" rel="noopener noreferrer">GorillaCase</a>
+      <a class="btn" href="https://t.me/majesticgamebot?startapp=r5438078953" target="_blank" rel="noopener noreferrer">MajesticGame</a>
+      <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank" rel="noopener noreferrer">Virus</a>
+      <a class="btn" href="https://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank" rel="noopener noreferrer">MellGifts</a>
+      <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank" rel="noopener noreferrer">ChanceApp</a>
+    </section>
 
-  <section class="links">
-    <a class="btn" href="#">Epic Gifts</a>
-    <a class="btn" href="#">Grab Gifts</a>
-    <a class="btn" href="#">OneCase</a>
-    <a class="btn" href="#">GorillaCase</a>
-    <a class="btn" href="#">MajesticGame</a>
-    <a class="btn" href="#">Virus</a>
-    <a class="btn" href="#">MellGifts</a>
-    <a class="btn" href="#">ChanceApp</a>
-  </section>
+    <audio id="bg-music" src="narvent_-_fainted.mp3" loop preload="auto"></audio>
 
-  <audio id="bg-music" src="narvent_-_fainted.mp3" loop></audio>
+    <div class="update-box">بزودی آپدیت‌های بیشتر ✨</div>
 
-  <div class="update-box">More updates coming soon…</div>
+    <div class="signature" aria-hidden="false">
+      <div class="note">برای دریافت زودهنگام اعلان‌ها عضو کانال شو</div>
+      <div class="handle">@ArshBemola</div>
+    </div>
+  </main>
 
-  <footer>Telegram: <a href="https://t.me/ArshBemola">@ArshBemola</a></footer>
+  <script>
+    const music = document.getElementById('bg-music');
+    const toggle = document.getElementById('music-toggle');
 
-</main>
+    // initial attempt to autoplay (Telegram Mini App may allow); swallow errors
+    window.addEventListener('load', () => {
+      music.volume = 0.7;
+      music.play().catch(()=>{});
+    });
 
-<script>
-const music = document.getElementById("bg-music");
-const toggle = document.getElementById("music-toggle");
-
-window.addEventListener("load", ()=> {
-  music.play().catch(()=>{});
-});
-
-toggle.addEventListener("click", ()=>{
-  if(music.paused){
-    music.play();
-    toggle.textContent="🔇";
-  }else{
-    music.pause();
-    toggle.textContent="🔊";
-  }
-});
-</script>
-
-</body>
-</html>
+    toggle.addEventListener('click', () => {
+      if (music.paused) {
+        music.play().catch(()=>{});
+        toggle.setAttribute('aria-pressed','true');
+        toggle.textContent = '🔇';
+      } else {
+        music.pause();
+        toggle.setAttri

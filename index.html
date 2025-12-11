@@ -9,16 +9,15 @@
 
   <style>
     :root{
-      --neon-dark1: #1b1b2f;
-      --neon-dark2: #0f0f1a;
-      --neon-glow1: #5f7cff;
-      --neon-glow2: #3a44d6;
-      --accent: #7fa2ff;
-      --text: #ffffff;
+      --dark-bg1: #1a1a1a;
+      --dark-bg2: #0f0f0f;
+      --accent-orange: #ff7f50;
+      --glow-orange: #ff6600;
+      --text: #fff;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
       margin:0;
       padding:0;
@@ -35,7 +34,7 @@
     .overlay {
       width:100%;
       min-height:100vh;
-      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.75) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 100%);
       display:flex;
       align-items:flex-start;
       justify-content:center;
@@ -47,9 +46,9 @@
       max-width:400px;
       margin-top:30px;
       border-radius:20px;
-      background: linear-gradient(180deg, var(--neon-dark1), var(--neon-dark2));
-      border: 1px solid rgba(95,124,255,0.25);
-      box-shadow: 0 12px 50px rgba(7,9,20,0.7), 0 0 60px rgba(79,92,255,0.1) inset;
+      background: linear-gradient(180deg, var(--dark-bg1), var(--dark-bg2));
+      border: 1px solid rgba(255,127,80,0.25);
+      box-shadow: 0 12px 50px rgba(0,0,0,0.7), 0 0 40px rgba(255,127,80,0.2) inset;
       padding:20px;
       backdrop-filter: blur(12px) saturate(1.2);
       transition: transform 0.3s ease;
@@ -61,9 +60,9 @@
     header h1{
       margin:8px 0 12px;
       font-size:32px;
-      color:var(--accent);
+      color:var(--accent-orange);
       letter-spacing:1px;
-      text-shadow: 0 0 20px #7f95ff88;
+      text-shadow: 0 0 20px #ff7f5088;
       font-weight:800;
       text-align:center;
     }
@@ -84,55 +83,41 @@
       font-weight:700;
       font-size:16px;
       color:#fff;
-      background: linear-gradient(90deg, var(--neon-glow1), var(--neon-glow2));
-      box-shadow: 0 8px 30px rgba(95,124,255,0.3), 0 0 30px rgba(60,70,220,0.25);
+      background: linear-gradient(90deg, var(--glow-orange), #ff3300);
+      box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);
       border: 1px solid rgba(255,255,255,0.03);
       text-align:center;
       position: relative;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
+      animation: neonBlink 2s infinite alternate;
     }
 
-    .btn::before {
-      content:"";
-      position:absolute;
-      top:50%;
-      left:50%;
-      width:300%;
-      height:300%;
-      background: rgba(255,255,255,0.04);
-      border-radius:50%;
-      transform:translate(-50%, -50%) scale(0);
-      transition: transform 0.4s ease, opacity 0.4s ease;
+    @keyframes neonBlink {
+      0% { box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);}
+      50% { box-shadow: 0 0 20px var(--glow-orange), 0 0 40px rgba(255,102,0,0.8);}
+      100% { box-shadow: 0 0 10px var(--glow-orange), 0 0 20px rgba(255,102,0,0.5);}
     }
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 14px 50px rgba(95,124,255,0.5), 0 0 50px rgba(60,70,220,0.35);
       filter: brightness(1.1);
     }
 
     .btn:active {
       transform: scale(0.95);
-      box-shadow: 0 10px 35px rgba(95,124,255,0.6), 0 0 60px rgba(60,70,220,0.5);
-    }
-
-    .btn:active::before {
-      transform: translate(-50%, -50%) scale(1);
-      opacity:0.3;
-      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .update-box{
       margin-top:20px;
       padding:12px;
       border-radius:12px;
-      background: rgba(18,18,30,0.5);
-      border: 1px dashed rgba(95,124,255,0.2);
+      background: rgba(18,18,30,0.6);
+      border: 1px dashed rgba(255,127,80,0.2);
       text-align:center;
-      color: #dfe8ff;
+      color: #ffd9b3;
       font-size:15px;
-      box-shadow: 0 6px 28px rgba(30,40,90,0.25) inset;
+      box-shadow: 0 6px 28px rgba(255,100,0,0.25) inset;
     }
 
     footer{
@@ -141,8 +126,30 @@
       font-size:14px;
       color:rgba(255,255,255,0.88);
     }
-    footer a{ color: #bfc9ff; text-decoration:none; font-weight:700 }
+    footer a{ color: #ffb87f; text-decoration:none; font-weight:700 }
     footer a:hover{ text-decoration:underline }
+
+    .music-control {
+      margin:15px 0;
+      text-align:center;
+    }
+
+    .music-btn {
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:12px;
+      background: linear-gradient(90deg, #ff7f50, #ff4500);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+      text-shadow: 0 0 5px #ff7f50;
+      box-shadow: 0 0 10px #ff7f50, 0 0 20px rgba(255,127,80,0.5);
+      transition: all 0.3s ease;
+    }
+    .music-btn:hover{
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ff7f50, 0 0 30px rgba(255,127,80,0.7);
+    }
 
     @media (max-width:420px){
       header h1{ font-size:28px }
@@ -169,6 +176,11 @@
         <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank" rel="noopener">ChanceApp</a>
       </section>
 
+      <div class="music-control">
+        <audio id="bg-music" src="narvent_-_fainted.mp3" loop></audio>
+        <button class="music-btn" id="music-toggle">Play🔊</button>
+      </div>
+
       <div class="update-box">More updates coming soon ✨</div>
 
       <footer>
@@ -176,5 +188,20 @@
       </footer>
     </main>
   </div>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const toggleBtn = document.getElementById('music-toggle');
+
+    toggleBtn.addEventListener('click', () => {
+      if(music.paused){
+        music.play();
+        toggleBtn.textContent = '🔇';
+      } else {
+        music.pause();
+        toggleBtn.textContent = '🔊';
+      }
+    });
+  </script>
 </body>
 </html>

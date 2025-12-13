@@ -2,28 +2,32 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Free Daily Cases — Mini App</title>
 
+  <!-- Fonts -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
 <main class="card">
 
   <!-- Music Toggle -->
-  <button id="music-toggle">🔊</button>
+  <button id="music-toggle" aria-label="Toggle music">🔊</button>
 
   <!-- Header -->
   <h1>Free Daily Cases</h1>
 
-  <!-- Buttons / Mini App Links -->
+  <!-- Buttons -->
   <section class="links">
 
-    <!-- NEW: Free TON Miner -->
-    <a class="btn" href="https://t.me/OilTycoonTON_bot/game?startapp=ii_5438078953" target="_blank">
+    <!-- FEATURED / VIP -->
+    <a class="btn featured" href="https://t.me/OilTycoonTON_bot/game?startapp=ii_5438078953" target="_blank">
       Free Ton Miner
     </a>
 
@@ -35,12 +39,13 @@
     <a class="btn" href="https://t.me/virus_play_bot/app?startapp=roulette_inviteCode64R0dNCbdgzrOlTy" target="_blank">Virus</a>
     <a class="btn" href="https://t.me/mellgifts_bot/app?startapp=LNJBIyLx" target="_blank">MellGifts</a>
     <a class="btn" href="https://t.me/ChanceAppBot/play?startapp=ref5438078953" target="_blank">ChanceApp</a>
+
   </section>
 
   <!-- Background Music -->
   <audio id="bg-music" src="narvent_-_fainted.mp3" preload="auto" loop></audio>
 
-  <!-- Update Box -->
+  <!-- Update -->
   <div class="update-box">✨ More updates coming soon</div>
 
   <!-- Signature -->
@@ -57,15 +62,34 @@
   const music = document.getElementById("bg-music");
   const toggle = document.getElementById("music-toggle");
 
-  // Attempt autoplay
-  window.addEventListener("load", () => {
-    music.play().catch(() => {});
+  let isPlaying = false;
+
+  function playMusic() {
+    music.play().then(() => {
+      isPlaying = true;
+      toggle.textContent = "🔊";
+    }).catch(() => {});
+  }
+
+  function pauseMusic() {
+    music.pause();
+    isPlaying = false;
+    toggle.textContent = "🔇";
+  }
+
+  // Toggle button
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    isPlaying ? pauseMusic() : playMusic();
   });
 
-  // Play on first user interaction (required by mobile browsers)
+  // Mobile autoplay unlock
   document.body.addEventListener("click", () => {
-    if (music.paused) music.play().catch(() => {});
-  });
+    if (!isPlaying) playMusic();
+  }, { once: true });
+
+  // Start muted icon
+  toggle.textContent = "🔇";
 </script>
 
 </body>

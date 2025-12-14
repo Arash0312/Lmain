@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Mini App Hub</title>
+<title>Mini App Entrance</title>
 
 <!-- Fonts -->
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
@@ -11,145 +11,141 @@
 
 <style>
 :root {
-  --neon-color-1: #00ffd5;
-  --neon-color-2: #ff4dff;
+  --neon-main: #ff9f00;
+  --bg-dark: #0a0a0a;
   --text-color: #ffffff;
 }
 
 /* Reset */
 * { box-sizing:border-box; margin:0; padding:0; }
-html, body { width:100%; height:100%; background:#0a0a0a; font-family:"Vazir",sans-serif; color:var(--text-color);}
+html, body { width:100%; height:100%; background: radial-gradient(circle at top, #0a0a0a, #050505); font-family:"Vazir",sans-serif; color:var(--text-color); }
 body { display:flex; justify-content:center; align-items:center; padding:12px 0; }
 
-/* Card */
+/* Card container */
 .card {
-  width:90%;
-  max-width:420px;
-  background: rgba(255,255,255,0.05);
-  padding:28px;
-  border-radius:24px;
+  width:92%;
+  max-width:440px;
+  background: rgba(255,255,255,0.04);
+  padding:36px 24px;
+  border-radius:28px;
   border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px);
-  box-shadow:0 0 50px rgba(0,0,0,0.7);
+  backdrop-filter:blur(16px);
+  box-shadow:0 0 60px rgba(0,0,0,0.7);
   position:relative;
   overflow:hidden;
   text-align:center;
 }
 
+/* Animated background lights */
+.card::before {
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, var(--neon-main) 0%, transparent 60%);
+  animation: pulseBg 3s ease-in-out infinite alternate;
+  opacity:0.2;
+  z-index:-1;
+}
+
+@keyframes pulseBg {
+  0% { transform:scale(1); opacity:0.15; }
+  50% { transform:scale(1.2); opacity:0.25; }
+  100% { transform:scale(1); opacity:0.15; }
+}
+
 /* Header */
 h1 {
-  font-family:"Playfair Display",serif;
-  font-size:30px;
+  font-family:"Playfair Display", serif;
+  font-size:32px;
   font-weight:700;
-  letter-spacing:1.5px;
-  margin-bottom:36px;
-  background: linear-gradient(90deg,var(--neon-color-1),var(--neon-color-2));
+  letter-spacing:1.6px;
+  margin-bottom:40px;
+  background: linear-gradient(90deg, var(--neon-main), #ffd78a);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-/* Links */
-.links { display:flex; flex-direction:column; gap:18px; }
+/* Buttons container */
+.links {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
 
-/* Buttons */
+/* Buttons design */
 .btn {
   position:relative;
   display:block;
-  padding:16px;
-  font-size:16px;
-  font-weight:600;
+  padding:18px;
+  font-size:18px;
+  font-weight:700;
   text-decoration:none;
   color:var(--text-color);
-  background: rgba(255,255,255,0.06);
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,0.07);
+  background: rgba(255,159,0,0.15);
+  border-radius:20px;
+  border:1px solid rgba(255,159,0,0.4);
   overflow:hidden;
+  box-shadow:0 0 25px rgba(255,159,0,0.5), inset 0 0 12px rgba(255,159,0,0.2);
   transition: all 0.35s ease;
 }
-.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
 
+/* Neon pulse effect */
 .btn::before {
   content:"";
   position:absolute;
-  inset:-50%;
-  background: conic-gradient(from 0deg, transparent, var(--neon-color-1), var(--neon-color-2), transparent);
-  opacity:0;
-  filter: blur(16px);
-  animation: rotateGlow 4s linear infinite;
-  transition: opacity 0.3s;
-  pointer-events:none;
-}
-.btn:hover::before { opacity:0.45; }
-
-.btn::after {
-  content:"";
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:-12px;
-  width:75%;
-  height:10px;
-  background:linear-gradient(90deg,transparent,var(--neon-color-2),transparent);
-  filter:blur(14px);
-  opacity:0.25;
-  transition:0.3s;
-  pointer-events:none;
-}
-.btn:hover::after { bottom:-16px; opacity:0.55; }
-
-/* Featured */
-.featured {
-  position:relative;
-  border-radius:20px;
-  overflow:visible;
-  animation: pulseNeon 2.5s ease-in-out infinite;
-  border:1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.07);
-  box-shadow:0 0 30px rgba(0,255,213,0.5), inset 0 0 12px rgba(255,77,255,0.25);
-}
-
-.featured::before {
-  content:"";
-  position:absolute;
-  top:-6px;
-  left:-6px;
-  width:calc(100%+12px);
-  height:calc(100%+12px);
-  border:2px solid transparent;
-  border-top-color:var(--neon-color-1);
-  border-radius:50%;
-  animation: spinRing 2s linear infinite;
+  inset:-20%;
+  background: conic-gradient(from 0deg, transparent, var(--neon-main), transparent);
+  filter: blur(14px);
+  opacity:0.4;
+  animation: rotateBtn 4s linear infinite;
   z-index:-1;
 }
 
-/* Update & Signature */
-.update-box { margin-top:22px; font-size:13px; color:#d0d0d0; background: rgba(255,255,255,0.06); padding:10px; border-radius:14px; }
-.signature { margin-top:20px; font-size:13px; text-align:center; }
-.signature .handle a { text-decoration:none; font-weight:700; background: linear-gradient(90deg,var(--neon-color-1),var(--neon-color-2)); -webkit-background-clip:text; color:transparent; }
+@keyframes rotateBtn { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
 
-/* Animations */
-@keyframes pulseNeon {0%{transform:translateY(0);box-shadow:0 0 20px rgba(0,255,213,0.5);}50%{transform:translateY(-2px);box-shadow:0 0 38px rgba(255,77,255,0.85);}100%{transform:translateY(0);box-shadow:0 0 20px rgba(0,255,213,0.5);}}
-@keyframes spinRing {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-@keyframes rotateGlow {to{transform:rotate(360deg);}}
+.btn span {
+  position:relative;
+  z-index:1;
+}
+
+/* Featured button more glow */
+.featured {
+  box-shadow:0 0 40px rgba(255,159,0,0.6), inset 0 0 18px rgba(255,159,0,0.25);
+}
+
+/* Back button small */
+.back {
+  position:absolute;
+  top:14px;
+  left:14px;
+  font-size:14px;
+  padding:6px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+/* Remove footer text */
 </style>
 </head>
 
 <body>
 <main class="card">
-  <h1>App Hub</h1>
+
+  <a class="back" href="#">← Back</a>
+
+  <h1>Mini App Hub</h1>
 
   <section class="links">
-    <a class="btn featured" href="app.html" target="_blank">Free Gifts Case</a>
-    <a class="btn featured" href="appp.html" target="_blank">Crush Game</a>
+    <a class="btn featured" href="app.index" target="_blank"><span>Free Gifts Case</span></a>
+    <a class="btn featured" href="appp.index" target="_blank"><span>Crush Game</span></a>
   </section>
 
-  <div class="update-box">✨ Choose your game</div>
-
-  <div class="signature">
-    <div class="handle">
-      <a href="https://t.me/ArshBemola" target="_blank">ArshBemola</a>
-    </div>
-  </div>
 </main>
 </body>
 </html>

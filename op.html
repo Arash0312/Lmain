@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Mini App Entrance</title>
+<title>Mini App Hub</title>
 
 <!-- Fonts -->
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 
 <style>
 :root {
-  --neon-main: #ff9f00;
+  --neon-main: #ffb65c; /* ملایم تر */
   --bg-dark: #0a0a0a;
   --text-color: #ffffff;
 }
@@ -30,7 +30,7 @@ body { display:flex; justify-content:center; align-items:center; padding:12px 0;
   border-radius:28px;
   border:1px solid rgba(255,255,255,0.08);
   backdrop-filter:blur(16px);
-  box-shadow:0 0 60px rgba(0,0,0,0.7);
+  box-shadow:0 0 50px rgba(0,0,0,0.7);
   position:relative;
   overflow:hidden;
   text-align:center;
@@ -46,14 +46,14 @@ body { display:flex; justify-content:center; align-items:center; padding:12px 0;
   height:200%;
   background:radial-gradient(circle, var(--neon-main) 0%, transparent 60%);
   animation: pulseBg 3s ease-in-out infinite alternate;
-  opacity:0.2;
+  opacity:0.15; /* کمتر تو چشم */
   z-index:-1;
 }
 
 @keyframes pulseBg {
-  0% { transform:scale(1); opacity:0.15; }
-  50% { transform:scale(1.2); opacity:0.25; }
-  100% { transform:scale(1); opacity:0.15; }
+  0% { transform:scale(1); opacity:0.1; }
+  50% { transform:scale(1.15); opacity:0.2; }
+  100% { transform:scale(1); opacity:0.1; }
 }
 
 /* Header */
@@ -84,11 +84,11 @@ h1 {
   font-weight:700;
   text-decoration:none;
   color:var(--text-color);
-  background: rgba(255,159,0,0.15);
+  background: rgba(255,182,92,0.15); /* ملایم تر */
   border-radius:20px;
-  border:1px solid rgba(255,159,0,0.4);
+  border:1px solid rgba(255,182,92,0.4);
   overflow:hidden;
-  box-shadow:0 0 25px rgba(255,159,0,0.5), inset 0 0 12px rgba(255,159,0,0.2);
+  box-shadow:0 0 20px rgba(255,182,92,0.4), inset 0 0 10px rgba(255,182,92,0.15);
   transition: all 0.35s ease;
 }
 
@@ -98,9 +98,9 @@ h1 {
   position:absolute;
   inset:-20%;
   background: conic-gradient(from 0deg, transparent, var(--neon-main), transparent);
-  filter: blur(14px);
-  opacity:0.4;
-  animation: rotateBtn 4s linear infinite;
+  filter: blur(12px);
+  opacity:0.3;
+  animation: rotateBtn 5s linear infinite;
   z-index:-1;
 }
 
@@ -113,37 +113,19 @@ h1 {
 
 /* Featured button more glow */
 .featured {
-  box-shadow:0 0 40px rgba(255,159,0,0.6), inset 0 0 18px rgba(255,159,0,0.25);
+  box-shadow:0 0 30px rgba(255,182,92,0.5), inset 0 0 12px rgba(255,182,92,0.2);
 }
-
-/* Back button small */
-.back {
-  position:absolute;
-  top:14px;
-  left:14px;
-  font-size:14px;
-  padding:6px 12px;
-  border-radius:12px;
-  text-decoration:none;
-  color:#fff;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.12);
-}
-
-/* Remove footer text */
 </style>
 </head>
 
 <body>
 <main class="card">
 
-  <a class="back" href="#">← Back</a>
-
   <h1>Mini App Hub</h1>
 
   <section class="links">
-    <a class="btn featured" href="app.index" target="_blank"><span>Free Gifts Case</span></a>
-    <a class="btn featured" href="appp.index" target="_blank"><span>Crush Game</span></a>
+    <a class="btn featured" href="app.html" target="_blank"><span>Free Gifts Case</span></a>
+    <a class="btn featured" href="appp.html" target="_blank"><span>Crush Game</span></a>
   </section>
 
 </main>

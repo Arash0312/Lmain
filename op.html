@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Mini App Hub</title>
+
+<!-- Fonts -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --neon-color-1: #00ffd5;
+  --neon-color-2: #ff4dff;
+  --text-color: #ffffff;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { width:100%; height:100%; background:#0a0a0a; font-family:"Vazir",sans-serif; color:var(--text-color); }
+body { display:flex; justify-content:center; align-items:center; padding:12px 0; }
+
+.card {
+  width:90%;
+  max-width:420px;
+  background: rgba(255,255,255,0.05);
+  padding:28px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  box-shadow:0 0 50px rgba(0,0,0,0.7);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+h1 {
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  margin-bottom:36px;
+  background: linear-gradient(90deg,var(--neon-color-1),var(--neon-color-2));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.links { display:flex; flex-direction:column; gap:18px; }
+
+.btn {
+  position:relative;
+  display:block;
+  padding:16px;
+  font-size:16px;
+  font-weight:600;
+  text-decoration:none;
+  color:var(--text-color);
+  background: rgba(255,255,255,0.06);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.07);
+  overflow:hidden;
+  transition: all 0.35s ease;
+}
+
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
+
+.btn::before {
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background: conic-gradient(from 0deg, transparent, var(--neon-color-1), var(--neon-color-2), transparent);
+  opacity:0;
+  filter: blur(16px);
+  animation: rotateGlow 4s linear infinite;
+  transition: opacity 0.3s;
+  pointer-events:none;
+}
+
+.btn:hover::before { opacity:0.45; }
+
+.btn::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-12px;
+  width:75%;
+  height:10px;
+  background:linear-gradient(90deg,transparent,var(--neon-color-2),transparent);
+  filter:blur(14px);
+  opacity:0.25;
+  transition:0.3s;
+  pointer-events:none;
+}
+
+.btn:hover::after { bottom:-16px; opacity:0.55; }
+
+.featured {
+  position:relative;
+  border-radius:20px;
+  overflow:visible;
+  animation: pulseNeon 2.5s ease-in-out infinite;
+  border:1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
+  box-shadow:0 0 30px rgba(0,255,213,0.5), inset 0 0 12px rgba(255,77,255,0.25);
+}
+
+.featured::before {
+  content:"";
+  position:absolute;
+  top:-6px;
+  left:-6px;
+  width:calc(100%+12px);
+  height:calc(100%+12px);
+  border:2px solid transparent;
+  border-top-color:var(--neon-color-1);
+  border-radius:50%;
+  animation: spinRing 2s linear infinite;
+  z-index:-1;
+}
+
+@keyframes pulseNeon {
+  0% { transform:translateY(0); box-shadow:0 0 20px rgba(0,255,213,0.5);}
+  50%{ transform:translateY(-2px); box-shadow:0 0 38px rgba(255,77,255,0.85);}
+  100%{ transform:translateY(0); box-shadow:0 0 20px rgba(0,255,213,0.5);}
+}
+
+@keyframes spinRing {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@keyframes rotateGlow {to{transform:rotate(360deg);}}
+
+.update-box { margin-top:22px; font-size:13px; color:#d0d0d0; background: rgba(255,255,255,0.06); padding:10px; border-radius:14px; }
+.signature { margin-top:20px; font-size:13px; text-align:center; }
+.signature .handle a { text-decoration:none; font-weight:700; background: linear-gradient(90deg,var(--neon-color-1),var(--neon-color-2)); -webkit-background-clip:text; color:transparent;}
+</style>
+</head>
+
+<body>
+<main class="card">
+  <h1>Mini App Hub</h1>
+
+  <section class="links">
+    <a class="btn featured" href="app.index">Free Gifts Case</a>
+    <a class="btn featured" href="appp.index">Crush Game</a>
+  </section>
+
+  <div class="update-box">✨ Choose your game</div>
+
+  <div class="signature">
+    <div class="handle">
+      <a href="https://t.me/ArshBemola" target="_blank">ArshBemola</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

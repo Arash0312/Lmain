@@ -18,7 +18,7 @@
 <main class="card">
 
   <!-- Music Toggle -->
-  <button id="music-toggle" aria-label="Toggle music">🔊</button>
+  <button id="music-toggle" aria-label="Toggle music">🔇</button>
 
   <!-- Header -->
   <h1>Free Daily Cases</h1>
@@ -30,7 +30,6 @@
     <a class="btn featured" href="https://t.me/OilTycoonTON_bot/game?startapp=ii_5438078953" target="_blank">
       Free Ton Miner
       <span class="badge">HOT</span>
-      <span class="ring"></span> <!-- حلقه نئونی چرخان -->
     </a>
 
     <a class="btn" href="https://t.me/epic_gift_bot/app?startapp=ref_-gqCyA" target="_blank">Epic Gifts</a>
@@ -78,18 +77,14 @@
     toggle.textContent = "🔇";
   }
 
-  // Toggle button
   toggle.addEventListener("click", (e) => {
     e.stopPropagation();
     isPlaying ? pauseMusic() : playMusic();
   });
 
-  // Mobile autoplay unlock
   document.body.addEventListener("click", () => {
     if (!isPlaying) playMusic();
   }, { once: true });
-
-  toggle.textContent = "🔇";
 </script>
 
 </body>

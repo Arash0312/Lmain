@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Free Daily Cases</title>
+
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/font-face.css" rel="stylesheet">
+
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Vazir, sans-serif;
+  background: radial-gradient(circle at top, #0b0b0b, #020202);
+}
+
+.splash {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* نور پس‌زمینه */
+.glow-bg {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(255,159,0,0.35), transparent 70%);
+  filter: blur(60px);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* کارت */
+.card {
+  z-index: 2;
+  background: rgba(255,255,255,0.04);
+  border-radius: 26px;
+  padding: 36px 32px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+}
+
+/* نام ربات */
+.title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ff9f00, #ffd28a, #ff9f00);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* زیرنویس */
+.subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* لودر */
+.loader {
+  margin: 28px auto 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: #ff9f00;
+  animation: spin 1s linear infinite;
+}
+
+/* انیمیشن‌ها */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .6; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: .6; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="splash">
+  <div class="glow-bg"></div>
+
+  <div class="card">
+    <div class="title">Free Daily Cases</div>
+    <div class="subtitle">Daily rewards · Referral bonuses</div>
+    <div class="loader"></div>
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    window.location.href = "app.html";
+  }, 3000);
+</script>
+
+</body>
+</html>

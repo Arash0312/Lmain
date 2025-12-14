@@ -4,7 +4,7 @@
   --text-color: #ffffff;
 }
 
-/* ===== Telegram Mini App Base Fix ===== */
+/* ===== Base ===== */
 html, body {
   width: 100%;
   height: 100%;
@@ -14,10 +14,10 @@ html, body {
 }
 
 body {
+  padding: 20px;
   background: radial-gradient(circle at top, #0a0a0a, #030303);
   font-family: "Vazir", sans-serif;
   color: var(--text-color);
-
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -29,12 +29,10 @@ body {
   max-width: 420px;
   margin: 16px;
   padding: 26px;
-
   background: rgba(255, 255, 255, 0.04);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(16px);
-
   position: relative;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
@@ -52,11 +50,9 @@ body {
   color: #fff;
   font-size: 18px;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.3s ease;
   box-shadow: inset 0 0 10px rgba(255,255,255,0.08);
 }
@@ -150,26 +146,28 @@ h1 {
 
 /* ===== FEATURED / VIP ===== */
 .featured {
+  position: relative;
   background: rgba(255, 159, 0, 0.16);
-  border: 1px solid rgba(255, 159, 0, 0.55);
+  border: 1px solid rgba(255, 159, 0, 0.6);
   box-shadow:
-    0 0 28px rgba(255,159,0,0.6),
-    inset 0 0 16px rgba(255,159,0,0.25);
-  animation: pulseNeon 2.4s ease-in-out infinite;
+    0 0 28px rgba(255,159,0,0.55),
+    inset 0 0 14px rgba(255,159,0,0.25);
+  animation: pulseNeon 2.6s ease-in-out infinite;
+  overflow: hidden;
 }
 
-/* HOT Badge */
+/* HOT Badge — INSIDE BUTTON */
 .featured .badge {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #ff9f00;
+  top: 8px;
+  right: 10px;
+  background: linear-gradient(90deg, #ff9f00, #ffd08a);
   color: #000;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 9px;
-  border-radius: 12px;
-  box-shadow: 0 0 14px rgba(255,159,0,0.85);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,159,0,0.8);
   pointer-events: none;
 }
 
